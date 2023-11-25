@@ -16,4 +16,4 @@ Maciej Stranz
 - [ ] Map
 
 ## Wstępny diagram klas UML
-![alt text](https://gitlab-stud.elka.pw.edu.pl/proi.23z-projekty/103.4-statki/-/blob/main/uml_statki.drawio.png?raw=true)
+![uml_statki.drawio](/uploads/601f0317cb058c9d87de30a45ddd7402/uml_statki.drawio.png)
