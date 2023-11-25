@@ -14,3 +14,6 @@ Maciej Stranz
 - [ ] Ship
 - [ ] Player
 - [ ] Map
+
+## Wstępny diagram klas UML
+![alt text](https://gitlab-stud.elka.pw.edu.pl/proi.23z-projekty/103.4-statki/-/blob/main/uml_statki.drawio.png?raw=true)
