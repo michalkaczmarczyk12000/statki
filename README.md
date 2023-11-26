@@ -63,4 +63,16 @@ Obsługa błędów dla sytuacji wyjątkowych, takich jak podanie nieprawidłowyc
 ## Wstępny diagram klas UML
 ![uml_statki.drawio](/uploads/601f0317cb058c9d87de30a45ddd7402/uml_statki.drawio.png)
 
+## Planowany podział prac
+Michał Kaczmarczyk
+- Klasy Game, GameRules, RandomPlayer, HumanPlayer
+- Klasy odpowiadające za statystyki oraz dobieranie poziomu przeciwnika      
 
+Maciej Stranz
+- Klasy Ship, Map oraz PlayerAI
+- Klasy służace do zapisu i odczytu stanu gry oraz mapy.
+
+## Aktualny stan projektu
+
+Stworzona wersja 1.0 wyświetla początkowy napis  
+```Witaj w symulatorze gry w statki ver 1.0```
