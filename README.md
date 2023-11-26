@@ -41,7 +41,7 @@ Etap rozmieszczania statków i etap właściwej gry, aby umożliwić graczom pla
 13. Zastosowanie struktur danych:
 Wykorzystanie struktur danych z biblioteki standradowej. 
 14. Obsługa błędów:
-Obsługa błędów dla sytuacji wyjątkowych, takich jak podanie nieprawidłowych współrzędnych czy próba ruchu poza planszą.
+Obsługa błędów dla sytuacji wyjątkowych, takich jak podanie nieprawidłowych współrzędnych czy próba ruchu poza planszą, a także nieudane próby zapisu do pliku lub odczytu.
 ## Początkowy podział na klasy i podklasy
 
 -  Game
@@ -65,11 +65,11 @@ Obsługa błędów dla sytuacji wyjątkowych, takich jak podanie nieprawidłowyc
 
 ## Planowany podział prac
 Michał Kaczmarczyk
-- Klasy Game, GameRules, RandomPlayer, HumanPlayer
+- Klasy Game, SeaBattle, ExtendedSeaBattle, RandomPlayer, HumanPlayer
 - Klasy odpowiadające za statystyki oraz dobieranie poziomu przeciwnika      
 
 Maciej Stranz
-- Klasy Ship, Map oraz PlayerAI
+- Klasy Ship, Map, PlayerAI, SailToDestination
 - Klasy służace do zapisu i odczytu stanu gry oraz mapy.
 
 ## Aktualny stan projektu
