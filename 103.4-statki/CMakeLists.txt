@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.16.0)
+project(Statki)
+add_subdirectory("${CMAKE_SOURCE_DIR}/lib")
+add_subdirectory("${CMAKE_SOURCE_DIR}/tests")
+add_subdirectory("${CMAKE_SOURCE_DIR}/app")
