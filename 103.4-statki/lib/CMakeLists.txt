@@ -5,6 +5,9 @@ add_library(Statki STATIC
     Field.cpp
     Map.cpp
     Ship.cpp
+    Player.cpp
+    RandomPlayer.cpp
+    Game.cpp
     
 )
 
