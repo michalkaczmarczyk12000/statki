@@ -14,4 +14,4 @@ set_target_properties(Statki
         CXX_STANDARD_REQUIRED ON
 )
 
-target_compile_options(Statki PRIVATE -Wall -Wextra -pedantic -Werror)
+target_compile_options(Statki PRIVATE -Wall -Wextra -pedantic )
