@@ -42,3 +42,14 @@ void Player::selectTarget(int x, int y, Map opponentMap) {
 bool Player::hasShips() const {
     return !ships_.empty();
 }
+
+void Player::updateShips() {
+    for (auto it = ships_.begin(); it != ships_.end();) {
+        (*it).updateShip();
+        if ((*it).getPositionOnMap().empty()) {
+            it = ships_.erase(it);
+        } else {
+            ++it;
+        }
+    }
+}

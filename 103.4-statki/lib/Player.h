@@ -20,6 +20,7 @@ public:
     void changeRank(int points);
     bool hasShips() const;
     std::pair<Map, Map> maps_;
+    void updateShips();
 protected:
     std::string name_;
     std::vector<Ship> ships_;
