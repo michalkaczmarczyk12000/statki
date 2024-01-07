@@ -20,7 +20,7 @@ Map::Map(int rows, int cols) : sizeX_(rows), sizeY_(cols){
 void Map::show() {
     for(auto row : fields_) {
         for(auto col : row) {
-            std::cout << col->isTakenByShip() << "\t";
+            std::cout << col->getStatusToDisplay() << "\t";
         }
         std::cout << std::endl;
     }
@@ -38,16 +38,13 @@ void Map::showForEnemy() {
             if(col->isHidden())
                 std::cout << "?" << "\t";
             else
-                std::cout << col->isTakenByShip() << "\t";
+                std::cout << col->getStatusToDisplay() << "\t";
         }
         std::cout << std::endl;
     }
 }
 
-std::shared_ptr<Field> Map::getField(int x, int y) const {
+std::shared_ptr<Field> Map::getField(int x, int y) {
     return fields_[x][y];
 }
 
-void Map::ShipHit(bool change, int x, int y) {
-    fields_[x][y]->setTakenByShip(change);
-}

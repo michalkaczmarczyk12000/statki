@@ -1,10 +1,11 @@
 #include "Field.h"
+#include <iostream>
 
-Field::Field(int x, int y, bool isTakenByShip, bool isHidden) : x_(x), y_(y), 
-    isTakenByShip_(isTakenByShip), isHidden_(isHidden){}
+Field::Field(int x, int y, FieldStatus status, bool isHidden) : x_(x), y_(y), 
+    status_(status), isHidden_(isHidden){}
 
-bool Field::isTakenByShip() const {
-    return isTakenByShip_;
+FieldStatus Field::getStatus() const {
+    return status_;
 }
 
 int Field::getx() const {
@@ -19,6 +20,14 @@ bool Field::isHidden() const {
     return isHidden_;
 }
 
-void Field::setTakenByShip(bool change) {
-    isTakenByShip_ = change;
+void Field::setStatus(FieldStatus status) {
+    status_ = status;
+}
+
+void Field::setHidden(bool change) {
+    isHidden_ = change;
+}
+
+char Field::getStatusToDisplay() {
+    return static_cast<char>(status_);
 }

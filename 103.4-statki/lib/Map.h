@@ -15,6 +15,5 @@ public:
     void show();
     void placeShip(Ship ship);
     void showForEnemy();
-    std::shared_ptr<Field> getField(int x, int y) const;
-    void ShipHit(bool change, int x, int y);
+    std::shared_ptr<Field> getField(int x, int y);
 };

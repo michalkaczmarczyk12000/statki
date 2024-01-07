@@ -13,6 +13,7 @@ private:
 public:
     Ship(int size, std::vector<std::pair<int,int>> positionOnMap);
     std::vector<std::shared_ptr<Field>> getPositionOnMap() const;
-    //void shot(int x, int y, Map map);
+    void shoot(int x, int y, Map map);
+    void updateShip();
 };
 
