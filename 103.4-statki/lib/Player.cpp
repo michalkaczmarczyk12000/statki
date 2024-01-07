@@ -4,10 +4,8 @@
 
 #include "Player.h"
 
-Player::Player(std::string name, Map map) : name_(name), rank_(1000)  {
-    maps_.push_back(map);
-};
-Player::Player(std::string name, int rank, Map map) : name_(name), rank_(rank) {
+
+Player::Player(std::string name, Map map, int rank) : name_(name), rank_(rank) {
     maps_.push_back(map);
 };
 

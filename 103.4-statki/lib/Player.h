@@ -10,16 +10,18 @@
 // chwilowy brak implementacji klas zasßąpiony strukturami
 struct Ship{};
 struct Field{};
-struct Map{};
+struct Map{
+    int sizeX = 10;
+    int sizeY = 10;
+};
 
 class Player {
 public:
-    Player(std::string name, Map map);
-    Player(std::string name, int rank, Map map);
+    Player(std::string name, Map map, int rank=1000);
     void placeShip(Ship ship, std::vector<Field> fields, Map map);
     int getRank() const;
     void changeRank(int points);
-private:
+protected:
     std::string name_;
     std::vector<Ship> ships_;
     std::vector<Map> maps_;

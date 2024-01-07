@@ -9,10 +9,13 @@
 
 class RandomPlayer : public Player{
 public:
-    RandomPlayer(std::string name, Map map);
-    RandomPlayer(std::string name, int rank, Map map);
+    RandomPlayer(std::string name, Map map, int rank=1000);
 private:
-    std::vector<Field> possibleShoots;
+    std::vector<std::pair<int, int>> possibleShoots;
+    void randomSelectTarget();
+    std::pair<int, int> getRandom() const;
+
+
 };
 
 
