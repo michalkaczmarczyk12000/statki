@@ -2,7 +2,8 @@
 enum class FieldStatus : char {
     x = 'x',
     zero = '0',
-    one = '1'
+    one = '1',
+    miss = 'm'
 };
 class Field {
 private:

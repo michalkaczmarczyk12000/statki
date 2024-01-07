@@ -3,7 +3,7 @@
 //
 
 #include "RandomPlayer.h"
-
+#include <stdexcept>
 
 RandomPlayer::RandomPlayer(std::string name, std::pair<Map, Map> map, std::vector<Ship> ships,int rank) : Player(name, map, ships, rank), gen(std::chrono::system_clock::now().time_since_epoch().count()) {
     for (int x = 0; x < map.second.sizeX_; x++) {
@@ -21,7 +21,7 @@ std::pair<int, int> RandomPlayer::getRandomField() {
         return shotCoordinates;
     }
     //we can add exception now
-    return std::make_pair(-1, -1);
+    throw std::runtime_error("Here I will add my own error, I promise");
 }
 
 void RandomPlayer::randomSelectTarget() {
