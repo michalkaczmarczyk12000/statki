@@ -29,3 +29,4 @@ void RandomPlayer::randomSelectTarget() {
     selectTarget(targetField.first, targetField.second, maps_.second);
 }
 
+

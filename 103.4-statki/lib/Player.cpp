@@ -13,7 +13,7 @@ int Player::getRank() const {
     return rank_;
 }
 
-bool Player::canPlaceShip() {
+bool Player::canPlaceShip() const{
     //chwilowo zakładamy, że można stawaić statki wszędzie
     return true;
 }
@@ -40,3 +40,6 @@ void Player::selectTarget(int x, int y, Map opponentMap) {
     }
 }
 
+bool Player::hasShips() const {
+    return !ships_.empty();
+}
