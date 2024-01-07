@@ -15,14 +15,33 @@ int main()
     int x,y;
     std::vector<std::pair<int,int>> pos;
     for (int i=0; i < 5; i ++) {
-        std::cin >> x >> y;
+        //std::cin >> x >> y;
+        x = 0;
+        y = i;
         pos.push_back(std::make_pair(x,y));
     }
-    Ship ship1(5,pos);
-    std::shared_ptr<Ship> pship = std::make_shared<Ship>(ship1);
-    testmap.placeShip(pship);
+    Ship ship1(5,pos);  
+    testmap.placeShip(ship1);
     std::cout << std::endl;
     testmap.show();
+    std::cout << std::endl;
+    testmap.showForEnemy();
+
+    //tescik 
+    testmap.ShipHit(false, 0, 4);
+    std::vector<std::shared_ptr<Field>> poss = ship1.getPositionOnMap();
+    std::cout << std::endl;
+    for(auto f : poss) {
+        std::cout << f->isTakenByShip() << "\t";
+    }
+    std::cout << std::endl << poss[poss.size()-1]->isTakenByShip() << std::endl;
+
+    testmap.show();
+
+
+
+
+
 
 }
 

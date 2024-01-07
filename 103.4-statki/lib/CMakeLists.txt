@@ -15,3 +15,4 @@ set_target_properties(Statki
 )
 
 target_compile_options(Statki PRIVATE -Wall -Wextra -pedantic )
+
