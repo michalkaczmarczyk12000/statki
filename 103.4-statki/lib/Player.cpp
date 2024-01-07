@@ -6,7 +6,7 @@
 
 
 Player::Player(std::string name, Map map, int rank) : name_(name), rank_(rank) {
-    maps_.push_back(map);
+    maps_.first = map;
 };
 
 int Player::getRank() const {
@@ -32,3 +32,11 @@ void Player::changeRank(int points) {
     //zakładamy, że mogą być ujemne punkty
     rank_ += points;
 }
+
+void Player::selectTarget(int x, int y, Map opponentMap) {
+    if(!ships_.empty())
+    {
+        ships_[0].shoot(x, y, opponentMap);
+    }
+}
+

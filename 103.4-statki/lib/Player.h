@@ -8,12 +8,15 @@
 #include <vector>
 //#include "Ship.h"
 // chwilowy brak implementacji klas zasßąpiony strukturami
-struct Ship{};
-struct Field{};
 struct Map{
     int sizeX = 10;
     int sizeY = 10;
 };
+struct Ship{
+    void shoot(int x, int y, Map map);
+};
+struct Field{};
+
 
 class Player {
 public:
@@ -24,7 +27,8 @@ public:
 protected:
     std::string name_;
     std::vector<Ship> ships_;
-    std::vector<Map> maps_;
+//    here we can have vector of std::pair if we can play more than one game at the same time
+    std::pair<Map, Map> maps_;
     bool canPlaceShip();
     void selectTarget(int x, int y, Map opponentMap);
     void shoot();
