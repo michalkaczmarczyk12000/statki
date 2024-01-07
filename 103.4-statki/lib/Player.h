@@ -14,8 +14,8 @@ struct Map{};
 
 class Player {
 public:
-    Player(std::string name);
-    Player(std::string name, int rank);
+    Player(std::string name, Map map);
+    Player(std::string name, int rank, Map map);
     void placeShip(Ship ship, std::vector<Field> fields, Map map);
     int getRank() const;
     void changeRank(int points);
@@ -24,6 +24,8 @@ private:
     std::vector<Ship> ships_;
     std::vector<Map> maps_;
     bool canPlaceShip();
+    void selectTarget(int x, int y, Map opponentMap);
+    void shoot();
     int rank_;
 };
 
