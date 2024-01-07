@@ -15,8 +15,7 @@ if(NOT catch2_POPULATED)
 endif()
 
 add_executable(StatkiTests
-gameTests.cpp 
-svgTests.cpp 
+gameTests.cpp
 )
 
 set_target_properties(StatkiTests

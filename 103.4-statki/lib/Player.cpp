@@ -5,8 +5,7 @@
 #include "Player.h"
 
 
-Player::Player(std::string name, Map map, int rank) : name_(name), rank_(rank) {
-    maps_.first = map;
+Player::Player(std::string name, std::pair<Map, Map>maps, std::vector<Ship> ships, int rank) : name_(name), maps_(maps), ships_(ships), rank_(rank) {
 };
 
 int Player::getRank() const {

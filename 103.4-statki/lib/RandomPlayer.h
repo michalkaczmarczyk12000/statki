@@ -13,8 +13,8 @@
 
 class RandomPlayer : public Player{
 public:
-    RandomPlayer(std::string name, Map map, int rank=1000);
-    void shoot() override;
+    RandomPlayer(std::string name, std::pair<Map, Map> map, std::vector<Ship> ships ,int rank=1000);
+    void shoot();
 private:
     std::vector<std::pair<int, int>> possibleShoots_;
     void randomSelectTarget();

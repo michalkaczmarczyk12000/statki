@@ -7,9 +7,10 @@ class Ship;
 class Map {
 private:
     std::vector<std::vector<std::shared_ptr<Field>>> fields_;
-    int sizeX_, sizeY_;
+
 public:
     Map(std::vector<std::vector<std::shared_ptr<Field>>> fields);
+    int sizeX_, sizeY_;
     //do usuniecia
     Map(int rows, int cols);
     void show();

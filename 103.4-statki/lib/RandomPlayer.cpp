@@ -5,9 +5,9 @@
 #include "RandomPlayer.h"
 
 
-RandomPlayer::RandomPlayer(std::string name, Map map, int rank) : Player(name, map, rank), gen(std::chrono::system_clock::now().time_since_epoch().count()) {
-    for (int x = 0; x < map.sizeX; x++) {
-        for (int y = 0; y < map.sizeY; y++) {
+RandomPlayer::RandomPlayer(std::string name, std::pair<Map, Map> map, std::vector<Ship> ships,int rank) : Player(name, map, ships, rank), gen(std::chrono::system_clock::now().time_since_epoch().count()) {
+    for (int x = 0; x < map.second.sizeX_; x++) {
+        for (int y = 0; y < map.second.sizeY_; y++) {
             possibleShoots_.push_back({x, y});
         }
     }
