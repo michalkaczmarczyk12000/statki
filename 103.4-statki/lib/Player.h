@@ -6,6 +6,9 @@
 #define INC_103_4_STATKI_PLAYER_H
 #include <string>
 #include <vector>
+//#include "Map.h"
+//#include "Ship"
+//#include "Field"
 //#include "Ship.h"
 // chwilowy brak implementacji klas zasßąpiony strukturami
 struct Map{
@@ -25,6 +28,7 @@ public:
     int getRank() const;
     void changeRank(int points);
     bool hasShips() const;
+    virtual void shoot();
 protected:
     std::string name_;
     std::vector<Ship> ships_;
@@ -32,7 +36,7 @@ protected:
     std::pair<Map, Map> maps_;
     bool canPlaceShip() const;
     void selectTarget(int x, int y, Map opponentMap) ;
-    void shoot();
+
     int rank_;
 };
 
