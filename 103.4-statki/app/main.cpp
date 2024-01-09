@@ -36,7 +36,7 @@ int main()
     GameRules grules;
     RandomPlayer p1("Michał", std::make_pair(testmap, testmap2), ships1);
     RandomPlayer p2("Maciek",std::make_pair(testmap2, testmap), ships2);
-    Game g1(p1, p2, grules);
+    Game g1(std::make_shared<RandomPlayer>(p1), std::make_shared<RandomPlayer>(p2), grules);
     g1.startGame();
     return 0;
 }

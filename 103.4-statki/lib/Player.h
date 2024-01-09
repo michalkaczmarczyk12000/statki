@@ -19,16 +19,16 @@ public:
     int getRank() const;
     void changeRank(int points);
     bool hasShips() const;
-    std::pair<Map, Map> maps_;
+    Map getMyMap() const;
+    Map getEnemyMap() const;
     void updateShips();
+    virtual void shoot() = 0;
 protected:
     std::string name_;
     std::vector<Ship> ships_;
-
-
+    std::pair<Map, Map> maps_;
     bool canPlaceShip() const;
-    void selectTarget(int x, int y, Map opponentMap) ;
-
+    void selectTarget(int x, int y, Map enemyMap);
     int rank_;
 };
 

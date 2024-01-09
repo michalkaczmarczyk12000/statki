@@ -7,14 +7,14 @@
 #include "Player.h"
 #include "GameRules.h"
 #include "RandomPlayer.h"
-
+#include <memory>
 class Game {
 private:
-    RandomPlayer p1_, p2_;
+    std::shared_ptr<Player> p1_, p2_;
     GameRules gameRules_;
 
 public:
-    Game(RandomPlayer p1, RandomPlayer p2, GameRules gameRules);
+    Game(std::shared_ptr<Player> p1, std::shared_ptr<Player> p2, GameRules gameRules);
     void startGame();
     void endGame();
     void winner();

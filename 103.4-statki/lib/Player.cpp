@@ -32,10 +32,10 @@ void Player::changeRank(int points) {
     rank_ += points;
 }
 
-void Player::selectTarget(int x, int y, Map opponentMap) {
+void Player::selectTarget(int x, int y, Map enemyMap) {
     if(!ships_.empty())
     {
-        ships_[0].shoot(x, y, opponentMap);
+        ships_[0].shoot(x, y, enemyMap);
     }
 }
 
@@ -52,4 +52,12 @@ void Player::updateShips() {
             ++it;
         }
     }
+}
+
+Map Player::getMyMap() const {
+    return maps_.first;
+}
+
+Map Player::getEnemyMap() const {
+    return maps_.second;
 }

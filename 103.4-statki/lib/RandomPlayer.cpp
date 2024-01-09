@@ -6,6 +6,7 @@
 #include <stdexcept>
 
 RandomPlayer::RandomPlayer(std::string name, std::pair<Map, Map> map, std::vector<Ship> ships,int rank) : Player(name, map, ships, rank), gen(std::chrono::system_clock::now().time_since_epoch().count()) {
+    //można funckje napisać
     for (int x = 0; x < map.second.getSizeX(); x++) {
         for (int y = 0; y < map.second.getSizeY(); y++) {
             possibleShoots_.push_back({x, y});
@@ -15,6 +16,7 @@ RandomPlayer::RandomPlayer(std::string name, std::pair<Map, Map> map, std::vecto
 
 std::pair<int, int> RandomPlayer::getRandomField() {
     if (!possibleShoots_.empty()) {
+        // tut też rozbić na mniejszą funckję np fieldShuffle
         std::shuffle(possibleShoots_.begin(), possibleShoots_.end(), gen);
         std::pair<int, int> shotCoordinates = possibleShoots_.back();
         possibleShoots_.pop_back();
