@@ -40,7 +40,7 @@ int main()
     // Game g1(std::make_shared<RandomPlayer>(p1), std::make_shared<RandomPlayer>(p2), grules);
     // g1.startGame();
     // return 0;
-    MapReader mr("/home/maciej/Pulpit/103.4-statki/103.4-statki/app/testsmap.txt");
+    MapReader mr("/home/michal/Desktop/statki/103.4-statki/103.4-statki/app/testsmap.txt");
     std::vector<std::vector<char>> matrix = mr.readMapMatrix();
     for(size_t i = 0; i < matrix.size(); i++){
         for(size_t j = 0; j<matrix[i].size(); j++) {

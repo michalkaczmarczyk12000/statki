@@ -14,12 +14,12 @@ std::vector<std::vector<char>> MapReader::readMapMatrix() {
     std::vector<char> row;
     std::string line;
     while(std::getline(file,line)){
-        std::getline(file, line);
+//        std::getline(file, line);
         std::istringstream iss(line);
         row = {};
-        while(iss) {
-            char c;
-            iss >> c;
+        char c;
+        while(iss >> c) {
+
             row.push_back(c);
         }
         map.push_back(row);
@@ -35,7 +35,7 @@ std::vector<std::string> MapReader::readMapMatrixstr() {
     std::vector<std::string> map;
     std::string line;
     while(std::getline(file,line)){
-        std::getline(file, line);
+//        std::getline(file, line);
         map.push_back(line);
     }
     return map;
