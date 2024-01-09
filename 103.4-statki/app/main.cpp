@@ -20,7 +20,7 @@ int main()
         y = i;
         pos.push_back(std::make_pair(x,y));
     }
-    Ship ship1(5,pos);
+    Ship ship1(pos);
     testmap.placeShip(ship1);
     Map testmap2(5,5);
     std::vector<std::pair<int,int>> pos2;
@@ -29,7 +29,7 @@ int main()
         y = i;
         pos2.push_back(std::make_pair(x,y));
     }
-    Ship ship2(5,pos2);
+    Ship ship2(pos2);
     testmap2.placeShip(ship2);
     std::vector<Ship> ships1 = {ship1};
     std::vector<Ship> ships2 = {ship2};
@@ -40,4 +40,5 @@ int main()
     g1.startGame();
     return 0;
 }
+
 

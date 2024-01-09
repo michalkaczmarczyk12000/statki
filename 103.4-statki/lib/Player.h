@@ -9,7 +9,7 @@
 #include "Map.h"
 #include "Field.h"
 #include "Ship.h"
-// chwilowy brak implementacji klas zasßąpiony strukturami
+
 
 
 class Player {
@@ -24,7 +24,7 @@ public:
 protected:
     std::string name_;
     std::vector<Ship> ships_;
-//    here we can have vector of std::pair if we can play more than one game at the same time
+
 
     bool canPlaceShip() const;
     void selectTarget(int x, int y, Map opponentMap) ;

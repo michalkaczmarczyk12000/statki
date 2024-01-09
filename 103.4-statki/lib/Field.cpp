@@ -28,6 +28,6 @@ void Field::setHidden(bool change) {
     isHidden_ = change;
 }
 
-char Field::getStatusToDisplay() {
+char Field::getStatusToDisplay() const {
     return static_cast<char>(status_);
 }

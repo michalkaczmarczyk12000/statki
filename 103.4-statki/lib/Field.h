@@ -5,6 +5,7 @@ enum class FieldStatus : char {
     one = '1',
     miss = 'm'
 };
+//zastanowic sie nad oznaczaniem ostatniego strzalu 
 class Field {
 private:
     int x_ ,y_;
@@ -18,5 +19,5 @@ public:
     bool isHidden() const;
     void setStatus(FieldStatus status);
     void setHidden(bool change);
-    char getStatusToDisplay();
+    char getStatusToDisplay() const;
 };

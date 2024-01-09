@@ -2,8 +2,6 @@
 #include <iostream>
 #include <vector>
 
-Map::Map(std::vector<std::vector<std::shared_ptr<Field>>> fields) 
-    : fields_(fields){}
 
 Map::Map(int rows, int cols) : sizeX_(rows), sizeY_(cols){
     std::vector<std::vector<std::shared_ptr<Field>>> fields;
@@ -46,5 +44,13 @@ void Map::showForEnemy() {
 
 std::shared_ptr<Field> Map::getField(int x, int y) {
     return fields_[x][y];
+}
+
+int Map::getSizeX() const {
+    return sizeX_;
+}
+
+int Map::getSizeY() const {
+    return sizeY_;
 }
 
