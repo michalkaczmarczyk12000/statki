@@ -60,3 +60,21 @@ int Map::getSizeY() const {
     return sizeY_;
 }
 
+std::vector<Ship> Map::getShips() const {
+    return ships_;
+}
+
+void Map::updateShips() {
+    for (auto it = ships_.begin(); it != ships_.end();) {
+        (*it).updateShip();
+        if ((*it).getPositionOnMap().empty()) {
+            it = ships_.erase(it);
+        } else {
+            ++it;
+        }
+    }
+}
+
+std::vector<Ship> Map::setShips(std::vector<Ship> ships) {
+    ships_ = ships;
+}

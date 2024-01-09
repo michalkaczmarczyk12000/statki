@@ -34,8 +34,10 @@ int main()
     std::vector<Ship> ships1 = {ship1};
     std::vector<Ship> ships2 = {ship2};
     GameRules grules;
-    RandomPlayer p1("Michał", std::make_pair(testmap, testmap2), ships1);
-    RandomPlayer p2("Maciek",std::make_pair(testmap2, testmap), ships2);
+    testmap.setShips(ships1);
+    testmap2.setShips(ships2);
+    RandomPlayer p1("Michał", std::make_pair(testmap, testmap2));
+    RandomPlayer p2("Maciek",std::make_pair(testmap2, testmap));
     Game g1(std::make_shared<RandomPlayer>(p1), std::make_shared<RandomPlayer>(p2), grules);
     g1.startGame();
     return 0;

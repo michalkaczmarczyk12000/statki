@@ -15,7 +15,10 @@ public:
     void show();
     void placeShip(Ship ship);
     void showForEnemy();
+    std::vector<Ship> setShips(std::vector<Ship> ships);
     int getSizeX() const;
     int getSizeY() const;
+    std::vector<Ship> getShips() const;
     std::shared_ptr<Field> getField(int x, int y);
+    void updateShips();
 };
