@@ -3,7 +3,8 @@
 #include <vector>
 
 
-Map::Map(int rows, int cols) : sizeX_(rows), sizeY_(cols){
+Map::Map(int rows, int cols, std::vector<Ship> ships) : sizeX_(rows), 
+    sizeY_(cols), ships_{ships}{
     std::vector<std::vector<std::shared_ptr<Field>>> fields;
     for(int i = 0; i < rows; i++) {
         std::vector<std::shared_ptr<Field>> row = {};
@@ -11,6 +12,11 @@ Map::Map(int rows, int cols) : sizeX_(rows), sizeY_(cols){
             row.push_back(std::make_shared<Field>(i,j));
         }
         fields.push_back(row);
+    }
+    if(!ships_.empty()) {
+        for(auto ship : ships_) {
+            placeShip(ship);
+        }
     }
     fields_ = fields;
 }

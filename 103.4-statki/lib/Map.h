@@ -8,9 +8,10 @@ class Map {
 private:
     std::vector<std::vector<std::shared_ptr<Field>>> fields_;
     int sizeX_, sizeY_;
+    std::vector<Ship> ships_;
 
 public:
-    Map(int rows, int cols);
+    Map(int rows, int cols, std::vector<Ship> ships = {});
     void show();
     void placeShip(Ship ship);
     void showForEnemy();
