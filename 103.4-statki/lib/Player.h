@@ -14,7 +14,7 @@
 
 class Player {
 public:
-    Player(std::string name, std::pair<Map, Map>,  int rank=1000);
+    Player(std::string name, std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> maps,  int rank=1000);
     void placeShip(Ship ship);
     int getRank() const;
     void changeRank(int points);
@@ -26,10 +26,10 @@ public:
     void checkStatus();
     bool canPlaceShip() const;
     virtual ~Player();
-    void selectTarget(int x, int y, Map enemyMap);
+    void selectTarget(int x, int y);
 protected:
     std::string name_;
-    std::pair<Map, Map> maps_;
+    std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> maps_;
     int rank_;
 };
 

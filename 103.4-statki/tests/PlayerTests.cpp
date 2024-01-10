@@ -5,12 +5,22 @@
 
 
 TEST_CASE("Player rank initialization") {
-    Player player("John", {Map(5, 5), Map(5, 5)}, 5);
+    Map objmap1(5,5);
+    Map objmap2(5,5);
+    std::shared_ptr<Map> map1 = std::make_shared<Map>(objmap1);
+    std::shared_ptr<Map> map2 = std::make_shared<Map>(objmap2);
+    std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> maps1 = std::make_pair(map1, map2);
+    Player player("John", maps1, 5);
     REQUIRE(player.getRank() == 5);
 }
 
 TEST_CASE("Player ship placement") {
-    Player player("John", {Map(5, 5), Map(5, 5)}, 5);
+    Map objmap1(5,5);
+    Map objmap2(5,5);
+    std::shared_ptr<Map> map1 = std::make_shared<Map>(objmap1);
+    std::shared_ptr<Map> map2 = std::make_shared<Map>(objmap2);
+    std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> maps1 = std::make_pair(map1, map2);
+    Player player("John", maps1, 5);
 
     SECTION("Can place ship") {
         REQUIRE(player.canPlaceShip() == true);
@@ -25,24 +35,28 @@ TEST_CASE("Player ship placement") {
 
 TEST_CASE("Player shooting at enemy map") {
 
-    std::pair<Map, Map> maps = std::make_pair(Map(5, 5), Map(5, 5));
-    Player player("Bob", maps, 8);
-    player.createShip({{0, 0}, {0, 1}});
-    REQUIRE_FALSE(!player.hasShips());
+    Map objmap1(5,5);
+    Map objmap2(5,5);
+    std::shared_ptr<Map> map1 = std::make_shared<Map>(objmap1);
+    std::shared_ptr<Map> map2 = std::make_shared<Map>(objmap2);
+    std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> maps1 = std::make_pair(map1, map2);
+    std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> maps2 = std::make_pair(map2, map1);
+    Player player1("Bob", maps1, 8);
+    Player player2("John", maps2, 8);
+    player1.createShip({{0, 0}, {0, 1}});
+    REQUIRE_FALSE(!player1.hasShips());
     SECTION("Select target and shoot") {
         // Assuming there is a ship on the enemy map
-        player.getEnemyMap().placeShip(Ship({{0, 0}, {0, 1}}));
-        player.selectTarget(0, 0, player.getEnemyMap());
-        INFO("Actual status: " << player.getEnemyMap().getField(0, 0)->getStatusToDisplay());
-        player.getEnemyMap().show();
-        REQUIRE(static_cast<char>(player.getEnemyMap().getField(0, 0)->getStatus()) == static_cast<char>(FieldStatus::x));
+        player2.createShip({{0, 0}, {0, 1}});
+        player1.selectTarget(0, 0);
+        INFO("Actual status: " << player1.getEnemyMap().getField(0, 0)->getStatusToDisplay());
+        player1.getEnemyMap().show();
+        REQUIRE(static_cast<char>(player1.getEnemyMap().getField(0, 0)->getStatus()) == static_cast<char>(FieldStatus::x));
     }
 
     SECTION("Check status after shooting") {
-        Map enemyMap(10 ,10);
-        enemyMap.placeShip(Ship({{0, 0}, {0, 1}}));
-        player.selectTarget(0, 0, enemyMap);
-        player.checkStatus();
-        REQUIRE(player.hasShips() == true);
+        player1.selectTarget(0, 1);
+        player2.checkStatus();
+        REQUIRE(player2.hasShips() == false);
     }
 }
