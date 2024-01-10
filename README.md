@@ -74,5 +74,4 @@ Maciej Stranz
 
 ## Aktualny stan projektu
 
-Stworzona wersja 1.0 wyświetla początkowy napis  
-```Witaj w symulatorze gry w statki ver 1.0```
+Stworzona wersja 1.1 pozwala na przeprowadzenie symulacji gry pomiędzy dwoma graczami klasy RandomPlayer. Mapa statków jest stała, gra toczy się do momentu, aż wszystkie statki jednego z graczy zostaną zatopione. Na koniec symulacji wyświetlany jest komunikat, który gracz wygrał wraz z gratulacjami dla niego. 
