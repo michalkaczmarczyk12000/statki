@@ -13,7 +13,8 @@ int Player::getRank() const {
 }
 
 bool Player::canPlaceShip() const{
-    //chwilowo zakładamy, że można stawaić statki wszędzie
+
+//    return maps_.first.canPlaceShip();
     return true;
 }
 
@@ -56,4 +57,11 @@ Map Player::getEnemyMap() const {
 
 void Player::checkStatus() {
     maps_.first.updateShips();
+}
+
+Player::~Player() {
+
+}
+void Player::shoot() {
+    // Implementation of shoot()
 }

@@ -31,6 +31,7 @@ void Map::show() {
 }
 
 void Map::placeShip(Ship ship) {
+    ships_.push_back(ship);
     for(auto field : ship.getPositionOnMap()) {
         fields_[field->getx()][field->gety()] = field;
     }

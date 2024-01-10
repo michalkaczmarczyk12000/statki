@@ -22,13 +22,14 @@ public:
     Map getMyMap() const;
     Map getEnemyMap() const;
     void createShip(std::vector<std::pair<int,int>> positionOnMap);
-    virtual void shoot() = 0;
+    virtual void shoot();
     void checkStatus();
+    bool canPlaceShip() const;
+    virtual ~Player();
+    void selectTarget(int x, int y, Map enemyMap);
 protected:
     std::string name_;
     std::pair<Map, Map> maps_;
-    bool canPlaceShip() const;
-    void selectTarget(int x, int y, Map enemyMap);
     int rank_;
 };
 
