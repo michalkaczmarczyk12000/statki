@@ -40,8 +40,9 @@ int main()
     // Game g1(std::make_shared<RandomPlayer>(p1), std::make_shared<RandomPlayer>(p2), grules);
     // g1.startGame();
     // return 0;
-    MapReader mr("/home/michal/Desktop/statki/103.4-statki/103.4-statki/app/testsmap.txt");
-    std::vector<std::vector<char>> matrix = mr.readMapMatrix();
+    MapReader mr;
+    std::string filenameMichal = "/home/michal/Desktop/statki/103.4-statki/103.4-statki/app/testsmap.txt";
+    std::vector<std::vector<char>> matrix = mr.readMap(filenameMichal);
     for(size_t i = 0; i < matrix.size(); i++){
         for(size_t j = 0; j<matrix[i].size(); j++) {
             std::cout << matrix[i][j] << '\t';
@@ -51,7 +52,7 @@ int main()
 
     std::cout << std::endl << std::endl;
     
-    std::vector<std::string> vecstr = mr.readMapMatrixstr();
+    std::vector<std::string> vecstr = mr.readMapMatrixstr(filenameMichal);
     for(size_t i = 0; i < vecstr.size(); i++) {
         std::cout << vecstr[i] << std::endl;
     }
