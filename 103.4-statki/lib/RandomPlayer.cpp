@@ -5,10 +5,10 @@
 #include "RandomPlayer.h"
 #include <stdexcept>
 
-RandomPlayer::RandomPlayer(std::string name, std::pair<Map, Map> map, std::vector<Ship> ships,int rank) : Player(name, map, ships, rank), gen(std::chrono::system_clock::now().time_since_epoch().count()) {
+RandomPlayer::RandomPlayer(std::string name, std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> map, int rank) : Player(name, map,  rank), gen(std::chrono::system_clock::now().time_since_epoch().count()) {
     //można funckje napisać
-    for (int x = 0; x < map.second.getSizeX(); x++) {
-        for (int y = 0; y < map.second.getSizeY(); y++) {
+    for (int x = 0; x < map.second->getSizeX(); x++) {
+        for (int y = 0; y < map.second->getSizeY(); y++) {
             possibleShoots_.push_back({x, y});
         }
     }
@@ -28,7 +28,7 @@ std::pair<int, int> RandomPlayer::getRandomField() {
 
 void RandomPlayer::randomSelectTarget() {
     auto targetField = getRandomField();
-    selectTarget(targetField.first, targetField.second, maps_.second);
+    selectTarget(targetField.first, targetField.second);
 }
 
 

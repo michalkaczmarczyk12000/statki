@@ -5,7 +5,7 @@
 #include "Player.h"
 
 
-Player::Player(std::string name, std::pair<Map, Map>maps, std::vector<Ship> ships, int rank) : name_(name), maps_(maps), ships_(ships), rank_(rank) {
+Player::Player(std::string name, std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>>maps,  int rank) : name_(name), maps_(maps),  rank_(rank) {
 };
 
 int Player::getRank() const {
@@ -17,14 +17,14 @@ bool Player::canPlaceShip() const{
     return true;
 }
 
-void Player::placeShip(Ship ship, std::vector<Field> fields, Map map) {
-    if(canPlaceShip())
-    {
-        ships_.push_back(ship);
-
-        //ship.setPosition(fields);
-
+void Player::createShip(std::vector<std::pair<int, int>> positionOnMap) {
+    if (canPlaceShip()) {
+        Ship newShip(positionOnMap);
+        maps_.first->placeShip(newShip);
     }
+}
+void Player::placeShip(Ship ship) {
+        maps_.first->placeShip(ship);
 }
 
 void Player::changeRank(int points) {
@@ -32,32 +32,35 @@ void Player::changeRank(int points) {
     rank_ += points;
 }
 
-void Player::selectTarget(int x, int y, Map enemyMap) {
-    if(!ships_.empty())
+void Player::selectTarget(int x, int y) {
+
+    if(hasShips())
     {
-        ships_[0].shoot(x, y, enemyMap);
+        maps_.first->getShips()[0].shoot(x, y, maps_.second);
     }
 }
 
 bool Player::hasShips() const {
-    return !ships_.empty();
+    return !(maps_.first->getShips().empty());
 }
 
-void Player::updateShips() {
-    for (auto it = ships_.begin(); it != ships_.end();) {
-        (*it).updateShip();
-        if ((*it).getPositionOnMap().empty()) {
-            it = ships_.erase(it);
-        } else {
-            ++it;
-        }
-    }
-}
+
 
 Map Player::getMyMap() const {
-    return maps_.first;
+    return *maps_.first;
 }
 
 Map Player::getEnemyMap() const {
-    return maps_.second;
+    return *maps_.second;
+}
+
+void Player::checkStatus() {
+    maps_.first->updateShips();
+}
+
+Player::~Player() {
+
+}
+void Player::shoot() {
+    // Implementation of shoot()
 }

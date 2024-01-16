@@ -14,21 +14,22 @@
 
 class Player {
 public:
-    Player(std::string name, std::pair<Map, Map>, std::vector<Ship> ships, int rank=1000);
-    void placeShip(Ship ship, std::vector<Field> fields, Map map);
+    Player(std::string name, std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> maps,  int rank=1000);
+    void placeShip(Ship ship);
     int getRank() const;
     void changeRank(int points);
     bool hasShips() const;
     Map getMyMap() const;
     Map getEnemyMap() const;
-    void updateShips();
-    virtual void shoot() = 0;
+    void createShip(std::vector<std::pair<int,int>> positionOnMap);
+    virtual void shoot();
+    void checkStatus();
+    bool canPlaceShip() const;
+    virtual ~Player();
+    void selectTarget(int x, int y);
 protected:
     std::string name_;
-    std::vector<Ship> ships_;
-    std::pair<Map, Map> maps_;
-    bool canPlaceShip() const;
-    void selectTarget(int x, int y, Map enemyMap);
+    std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> maps_;
     int rank_;
 };
 
