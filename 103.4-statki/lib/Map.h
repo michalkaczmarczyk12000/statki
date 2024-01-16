@@ -16,5 +16,5 @@ public:
     void showForEnemy();
     int getSizeX() const;
     int getSizeY() const;
-    std::shared_ptr<Field> getField(int x, int y);
+    std::shared_ptr<Field> getField(int x, int y) const;
 };

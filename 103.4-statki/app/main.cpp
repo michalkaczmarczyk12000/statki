@@ -9,6 +9,7 @@
 #include "../lib/Player.h"
 #include "../lib/RandomPlayer.h"
 #include "../lib/MapReader.h"
+#include "../lib/Writer.h"
 
 int main()
 {
@@ -41,10 +42,12 @@ int main()
     // g1.startGame();
     // return 0;
     MapReader mr;
+    Writer wr;
     std::string filenameMichal = "/home/michal/Desktop/103.4-statki/103.4-statki/app/testsmap.txt";
     std::vector<std::vector<char>> matrix = mr.readMap(filenameMichal);
     auto mapa =  mr.createMap(filenameMichal);
     mapa.show();
+    wr.writeMapToFile(mapa, "newmap.txt");
 //    for(size_t i = 0; i < matrix.size(); i++){
 //        for(size_t j = 0; j<matrix[i].size(); j++) {
 //            std::cout << matrix[i][j] << '\t';
