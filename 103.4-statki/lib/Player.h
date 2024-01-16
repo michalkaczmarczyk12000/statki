@@ -10,13 +10,13 @@
 #include "Field.h"
 #include "Ship.h"
 
-//struct maps {
-//    std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> maps;
-//};
+struct maps {
+    std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> maps;
+};
 
 class Player {
 public:
-    Player(std::string name, std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> maps,  int rank=1000);
+    Player(std::string name, maps playerMaps,  int rank=1000);
     void placeShip(Ship ship);
     int getRank() const;
     void changeRank(int points);
@@ -31,7 +31,7 @@ public:
     void selectTarget(int x, int y);
 protected:
     std::string name_;
-    std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> maps_;
+    maps maps_;
     int rank_;
 };
 

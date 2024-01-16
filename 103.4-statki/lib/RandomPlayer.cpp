@@ -5,10 +5,10 @@
 #include "RandomPlayer.h"
 #include <stdexcept>
 
-RandomPlayer::RandomPlayer(std::string name, std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> map, int rank) : PlayerAI(name, map,  rank), gen(std::chrono::system_clock::now().time_since_epoch().count()) {
+RandomPlayer::RandomPlayer(std::string name, maps playerMaps, int rank) : PlayerAI(name, playerMaps,  rank), gen(std::chrono::system_clock::now().time_since_epoch().count()) {
     //można funckje napisać
-    for (int x = 0; x < map.second->getSizeX(); x++) {
-        for (int y = 0; y < map.second->getSizeY(); y++) {
+    for (int x = 0; x < playerMaps.maps.second->getSizeX(); x++) {
+        for (int y = 0; y < playerMaps.maps.second->getSizeY(); y++) {
             possibleShoots_.push_back({x, y});
         }
     }

@@ -4,8 +4,8 @@
 
 #include "PlayerAI.h"
 
-PlayerAI::PlayerAI(std::string name, std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> maps, int rank)
-        : Player(std::move(name), maps, rank) {
+PlayerAI::PlayerAI(std::string name, maps playerMaps, int rank)
+        : Player(std::move(name), playerMaps, rank) {
     // Additional initialization specific to AIPlayer if needed
 }
 

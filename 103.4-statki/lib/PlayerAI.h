@@ -8,7 +8,7 @@
 
 class PlayerAI : public Player {
 public:
-    PlayerAI(std::string name, std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> maps, int rank = 1000);
+    PlayerAI(std::string name, maps playerMaps, int rank = 1000);
     virtual ~PlayerAI();
 };
 

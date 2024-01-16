@@ -38,10 +38,15 @@ int main()
      GameRules grules;
     std::shared_ptr<Map> map1 = std::make_shared<Map>(testmap);
     std::shared_ptr<Map> map2 = std::make_shared<Map>(testmap2);
-    std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> maps1 = std::make_pair(map1, map2);
-    std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> maps2 = std::make_pair(map2, map1);
-     RandomPlayer p1("Michał", maps1);
-     RandomPlayer p2("Maciek", maps2);
+    maps maps1 = {
+            std::make_pair(std::make_shared<Map>(testmap), std::make_shared<Map>(testmap2))
+    };
+
+    maps maps2 = {
+            std::make_pair(std::make_shared<Map>(testmap2), std::make_shared<Map>(testmap))
+    };
+    RandomPlayer p1("Michał", maps1);
+    RandomPlayer p2("Maciek", maps2);
      Game g1(std::make_shared<RandomPlayer>(p1), std::make_shared<RandomPlayer>(p2), grules);
      g1.startGame();
      return 0;
