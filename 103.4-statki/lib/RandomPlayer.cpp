@@ -35,4 +35,3 @@ void RandomPlayer::randomSelectTarget() {
 void RandomPlayer::shoot() {
     randomSelectTarget();
 }
-

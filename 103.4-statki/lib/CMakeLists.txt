@@ -10,6 +10,7 @@ add_library(Statki STATIC
     Game.cpp
     MapReader.cpp
     Writer.cpp
+    GameRules.cpp
 )
 
 set_target_properties(Statki

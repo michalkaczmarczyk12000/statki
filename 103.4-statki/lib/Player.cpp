@@ -24,7 +24,7 @@ void Player::createShip(std::vector<std::pair<int, int>> positionOnMap) {
     }
 }
 void Player::placeShip(Ship ship) {
-        maps_.first->placeShip(ship);
+    maps_.first->placeShip(ship);
 }
 
 void Player::changeRank(int points) {
