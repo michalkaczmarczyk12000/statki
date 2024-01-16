@@ -40,4 +40,19 @@ void Ship::updateShip() {
     }
 }
 
+void Ship::move(int x, int y, orientation orientation) {
+    std::vector<std::shared_ptr<Field>> newPosition;
+    newPosition.push_back(std::make_shared<Field>(x, y, FieldStatus::one));
+    if(orientation == orientation::horizontally) {
+        for (int i = 0; i < positionOnMap_.size()-1; ++i) {
+            newPosition.push_back(std::make_shared<Field>(x , y + i, FieldStatus::one));
+        }
+    }
+    else {
+        for (int i = 0; i < positionOnMap_.size(); ++i) {
+            newPosition.push_back(std::make_shared<Field>(x + i, y, FieldStatus::one));
+        }
+    }
+    positionOnMap_ = newPosition;
+}
 int Ship::countOfShips = 0;
