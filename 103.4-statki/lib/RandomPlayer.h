@@ -17,7 +17,6 @@ public:
     virtual Coordinates shoot() override;
     virtual ~RandomPlayer();
 protected:
-    std::vector<Coordinates> possibleShoots_;
     Coordinates randomSelectTarget();
     Coordinates getRandomField();
     std::mt19937 gen;

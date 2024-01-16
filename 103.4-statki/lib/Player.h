@@ -36,6 +36,7 @@ protected:
     std::string name_;
     maps maps_;
     int rank_;
+    std::vector<Coordinates> possibleShoots_;
 };
 
 

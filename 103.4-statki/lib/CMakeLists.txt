@@ -12,7 +12,8 @@ add_library(Statki STATIC
     Writer.cpp
     GameRules.cpp
     Coordinates.cpp
-        AdvancedAIPlayer.cpp
+    AdvancedAIPlayer.cpp
+    HumanPlayer.cpp
 )
 
 set_target_properties(Statki

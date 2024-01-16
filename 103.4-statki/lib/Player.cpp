@@ -6,6 +6,11 @@
 
 
 Player::Player(std::string name, maps playerMaps,  int rank) : name_(name), maps_(playerMaps),  rank_(rank) {
+    for (int x = 0; x < playerMaps.maps.second->getSizeX(); x++) {
+        for (int y = 0; y < playerMaps.maps.second->getSizeY(); y++) {
+            possibleShoots_.push_back({x, y});
+        }
+    }
 };
 
 int Player::getRank() const {

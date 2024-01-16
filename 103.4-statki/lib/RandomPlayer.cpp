@@ -6,12 +6,8 @@
 #include <stdexcept>
 
 RandomPlayer::RandomPlayer(std::string name, maps playerMaps, int rank) : Player(name, playerMaps,  rank), gen(std::chrono::system_clock::now().time_since_epoch().count()) {
-    //można funckje napisać
-    for (int x = 0; x < playerMaps.maps.second->getSizeX(); x++) {
-        for (int y = 0; y < playerMaps.maps.second->getSizeY(); y++) {
-            possibleShoots_.push_back({x, y});
-        }
-    }
+
+
 };
 
 Coordinates RandomPlayer::getRandomField() {
