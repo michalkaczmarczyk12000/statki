@@ -54,7 +54,7 @@ Map Player::getEnemyMap() const {
     return *maps_.second;
 }
 
-void Player::checkStatus() {
+void Player::updateStatus() {
     maps_.first->updateShips();
 }
 

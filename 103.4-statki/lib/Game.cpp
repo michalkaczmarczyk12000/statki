@@ -13,7 +13,7 @@ void Game::startGame() {
     int delay = 10;
     std::cout << "Witaj w symulatorze wersja 1.1\n";
     while(true) {
-        p1_->checkStatus();
+        p1_->updateStatus();
         if (!p1_->hasShips()){
             std::cout<<"Wygrał Król niech żyje król 2\n";
             break;
@@ -25,7 +25,7 @@ void Game::startGame() {
         p1_->getEnemyMap().showForEnemy();
         std::cout<<"\n-----------------------------------------\n";
         std::this_thread::sleep_for(std::chrono::milliseconds(delay));
-        p2_->checkStatus();
+        p2_->updateStatus();
         if (!p2_->hasShips()){
             std::cout<<"Wygrał Król niech żyje król 1\n";
             break;

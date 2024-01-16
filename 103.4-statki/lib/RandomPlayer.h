@@ -4,14 +4,14 @@
 
 #ifndef INC_103_4_STATKI_RANDOMPLAYER_H
 #define INC_103_4_STATKI_RANDOMPLAYER_H
-#include "Player.h"
+#include "PlayerAI.h"
 #include <chrono>
 #include <random>
 #include <algorithm>
 
 
 
-class RandomPlayer : public Player{
+class RandomPlayer : public PlayerAI {
 public:
     RandomPlayer(std::string name, std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> map, int rank=1000);
     void shoot() override;
