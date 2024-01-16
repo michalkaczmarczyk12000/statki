@@ -17,7 +17,7 @@ bool Player::canPlaceShip() const{
     return true;
 }
 
-void Player::createShip(std::vector<std::pair<int, int>> positionOnMap) {
+void Player::createShip(std::vector<Coordinates> positionOnMap) {
     if (canPlaceShip()) {
         Ship newShip(positionOnMap);
         maps_.maps.first->placeShip(newShip);

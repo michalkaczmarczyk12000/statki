@@ -15,21 +15,21 @@ int main()
 {
      std::cout << "Witaj w symulatorze gry w statki ver 1.0\n";
      Map testmap(5,5);
-     std::vector<std::pair<int,int>> pos;
+     std::vector<Coordinates> pos;
      int x,y;
      for (int i=0; i < 5; i ++) {
          x = 0;
          y = i;
-         pos.push_back(std::make_pair(x,y));
+         pos.push_back(Coordinates(x,y));
      }
      Ship ship1(pos);
      testmap.placeShip(ship1);
      Map testmap2(5,5);
-     std::vector<std::pair<int,int>> pos2;
+     std::vector<Coordinates> pos2;
      for (int i=0; i < 5; i ++) {
          x = 0;
          y = i;
-         pos2.push_back(std::make_pair(x,y));
+         pos2.push_back(Coordinates(x,y));
      }
      Ship ship2(pos2);
      testmap2.placeShip(ship2);

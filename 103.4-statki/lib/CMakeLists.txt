@@ -12,6 +12,7 @@ add_library(Statki STATIC
     Writer.cpp
     GameRules.cpp
     PlayerAI.cpp
+    Coordinates.cpp
 )
 
 set_target_properties(Statki

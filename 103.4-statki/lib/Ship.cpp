@@ -1,7 +1,7 @@
 #include "Ship.h"
 #include <stdexcept>
 #include <iostream>
-Ship::Ship(std::vector<std::pair<int,int>> positionOnMap) : 
+Ship::Ship(std::vector<Coordinates> positionOnMap) :
     id_(countOfShips), size_(positionOnMap.size()) {
         // if(size != positionOnMap.size())
         //     //throw std::runtime_error("musi byc taka sama wielkosc statku co ilosc arg");
@@ -10,7 +10,7 @@ Ship::Ship(std::vector<std::pair<int,int>> positionOnMap) :
             // if(pair.first < 0 || pair.second < 0)
             //     //throw std::invalid_argument("poza mapa");
             //     std::cout << "poza mapa" << std::endl;
-            positionOnMap_.push_back(std::make_shared<Field>(pair.first, pair.second, FieldStatus::one));
+            positionOnMap_.push_back(std::make_shared<Field>(pair.x, pair.y, FieldStatus::one));
         }
     countOfShips += 1;
     }

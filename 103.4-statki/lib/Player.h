@@ -9,10 +9,13 @@
 #include "Map.h"
 #include "Field.h"
 #include "Ship.h"
-
+#include "Coordinates.h"
+class Ship;
+class Map;
 struct maps {
     std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> maps;
 };
+
 
 class Player {
 public:
@@ -23,7 +26,7 @@ public:
     bool hasShips() const;
     Map getMyMap() const;
     Map getEnemyMap() const;
-    void createShip(std::vector<std::pair<int,int>> positionOnMap);
+    void createShip(std::vector<Coordinates> positionOnMap);
     virtual void shoot();
     void updateStatus();
     bool canPlaceShip() const;

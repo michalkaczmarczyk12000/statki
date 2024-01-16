@@ -8,7 +8,7 @@ void MapReader::placeShips(std::vector<std::vector<char>>& map, Map& gameMap) {
     for (size_t i = 0; i < map.size(); ++i) {
         for (size_t j = 0; j < map[i].size(); ++j) {
             if (map[i][j] == '1') {
-                std::vector<std::pair<int, int>> shipPositions;
+                std::vector<Coordinates> shipPositions;
                 findShipPositions(i, j, map,shipPositions);
 
                 if (!shipPositions.empty()) {
@@ -20,9 +20,9 @@ void MapReader::placeShips(std::vector<std::vector<char>>& map, Map& gameMap) {
     }
 }
 
-void MapReader::findShipPositions(int startRow, int startCol, const std::vector<std::vector<char>>& map, std::vector<std::pair<int, int>>& shipPositions) {
+void MapReader::findShipPositions(int startRow, int startCol, const std::vector<std::vector<char>>& map, std::vector<Coordinates>& shipPositions) {
     if (isValidPosition(startRow, startCol, map) && map[startRow][startCol] == '1') {
-        shipPositions.push_back(std::make_pair(startRow, startCol));
+        shipPositions.push_back(Coordinates(startRow, startCol));
 
         const_cast<std::vector<std::vector<char>>&>(map)[startRow][startCol] = '0';
 
