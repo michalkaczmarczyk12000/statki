@@ -9,7 +9,7 @@
 Game::Game(std::shared_ptr<Player> p1, std::shared_ptr<Player> p2, GameRules gameRules) : p1_(p1), p2_(p2), gameRules_(gameRules) {};
 
 void Game::startGame() {
-    //wymaga refactoringu ale do wersji 1 jest wystarczjące
+    //wymaga refactoringu ale do wersji 1.1 jest wystarczjące
     int delay = 10;
     std::cout << "Witaj w symulatorze wersja 1.1\n";
     while(true) {
