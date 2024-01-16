@@ -41,21 +41,23 @@ int main()
     // g1.startGame();
     // return 0;
     MapReader mr;
-    std::string filenameMichal = "/home/michal/Desktop/statki/103.4-statki/103.4-statki/app/testsmap.txt";
+    std::string filenameMichal = "/home/michal/Desktop/103.4-statki/103.4-statki/app/testsmap.txt";
     std::vector<std::vector<char>> matrix = mr.readMap(filenameMichal);
-    for(size_t i = 0; i < matrix.size(); i++){
-        for(size_t j = 0; j<matrix[i].size(); j++) {
-            std::cout << matrix[i][j] << '\t';
-        }
-        std::cout << std::endl;
-    }
-
-    std::cout << std::endl << std::endl;
-    
-    std::vector<std::string> vecstr = mr.readMapMatrixstr(filenameMichal);
-    for(size_t i = 0; i < vecstr.size(); i++) {
-        std::cout << vecstr[i] << std::endl;
-    }
+    auto mapa =  mr.createMap(filenameMichal);
+    mapa.show();
+//    for(size_t i = 0; i < matrix.size(); i++){
+//        for(size_t j = 0; j<matrix[i].size(); j++) {
+//            std::cout << matrix[i][j] << '\t';
+//        }
+//        std::cout << std::endl;
+//    }
+//
+//    std::cout << std::endl << std::endl;
+//
+//    std::vector<std::string> vecstr = mr.readMapMatrixstr(filenameMichal);
+//    for(size_t i = 0; i < vecstr.size(); i++) {
+//        std::cout << vecstr[i] << std::endl;
+//    }
 
 
 }
