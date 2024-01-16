@@ -8,7 +8,8 @@ add_library(Statki STATIC
     Player.cpp
     RandomPlayer.cpp
     Game.cpp
-    
+    MapReader.cpp
+    Writer.cpp
 )
 
 set_target_properties(Statki

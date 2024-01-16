@@ -48,7 +48,7 @@ void Map::showForEnemy() {
     }
 }
 
-std::shared_ptr<Field> Map::getField(int x, int y) {
+std::shared_ptr<Field> Map::getField(int x, int y) const{
     return fields_[x][y];
 }
 
