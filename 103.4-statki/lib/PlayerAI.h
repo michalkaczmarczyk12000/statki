@@ -10,6 +10,7 @@ class PlayerAI : public Player {
 public:
     PlayerAI(std::string name, maps playerMaps, int rank = 1000);
     virtual ~PlayerAI();
+
 };
 
 
