@@ -15,7 +15,7 @@ private:
 public:
     Ship(std::vector<Coordinates> positionOnMap);
     std::vector<std::shared_ptr<Field>> getPositionOnMap() const;
-    void shoot(int x, int y, std::shared_ptr<Map> map);
+    void shoot(Coordinates coords, std::shared_ptr<Map> map);
     void updateShip();
 };
 

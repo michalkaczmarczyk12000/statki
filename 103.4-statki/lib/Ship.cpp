@@ -20,8 +20,8 @@ std::vector<std::shared_ptr<Field>> Ship::getPositionOnMap() const {
 }
 
 
-void Ship::shoot(int x, int y, std::shared_ptr<Map> map) {
-    std::shared_ptr<Field> PHitField = map->getField(x,y);
+void Ship::shoot(Coordinates c, std::shared_ptr<Map> map) {
+    std::shared_ptr<Field> PHitField = map->getField(c);
     if (PHitField->getStatus() == FieldStatus::one) {
         PHitField->setStatus(FieldStatus::x);}
     else{

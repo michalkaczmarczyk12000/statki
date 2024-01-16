@@ -11,8 +11,8 @@ add_library(Statki STATIC
     MapReader.cpp
     Writer.cpp
     GameRules.cpp
-    PlayerAI.cpp
     Coordinates.cpp
+        AdvancedAIPlayer.cpp
 )
 
 set_target_properties(Statki
@@ -21,5 +21,5 @@ set_target_properties(Statki
         CXX_STANDARD_REQUIRED ON
 )
 
-target_compile_options(Statki PRIVATE -Wall -Wextra -pedantic )
+target_compile_options(Statki PRIVATE -Wall -Wextra -pedantic -g)
 

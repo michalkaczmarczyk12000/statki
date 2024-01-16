@@ -15,7 +15,7 @@ void Writer::writeMapToFile(const Map& map, const std::string& filename) const {
 
     for (int i = 0; i < map.getSizeX(); ++i) {
         for (int j = 0; j < map.getSizeY(); ++j) {
-        auto field = map.getField(i, j);
+        auto field = map.getField(Coordinates(i, j));
             file << field->getStatusToDisplay() << ' ';
         }
         file << '\n';

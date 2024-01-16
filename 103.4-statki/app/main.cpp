@@ -10,6 +10,7 @@
 #include "../lib/RandomPlayer.h"
 #include "../lib/MapReader.h"
 #include "../lib/Writer.h"
+#include "../lib/AdvancedAIPlayer.h"
 
 int main()
 {
@@ -46,8 +47,8 @@ int main()
             std::make_pair(std::make_shared<Map>(testmap2), std::make_shared<Map>(testmap))
     };
     RandomPlayer p1("Michał", maps1);
-    RandomPlayer p2("Maciek", maps2);
-     Game g1(std::make_shared<RandomPlayer>(p1), std::make_shared<RandomPlayer>(p2), grules);
+    AdvancedAIPlayer p2("Maciek", maps2);
+     Game g1(std::make_shared<RandomPlayer>(p1), std::make_shared<AdvancedAIPlayer>(p2), grules);
      g1.startGame();
      return 0;
 //    MapReader mr;

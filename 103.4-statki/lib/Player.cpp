@@ -32,11 +32,11 @@ void Player::changeRank(int points) {
     rank_ += points;
 }
 
-void Player::selectTarget(int x, int y) {
+void Player::selectTarget(Coordinates coords) {
 
     if(hasShips())
     {
-        maps_.maps.first->getShips()[0].shoot(x, y, maps_.maps.second);
+        maps_.maps.first->getShips()[0].shoot(coords, maps_.maps.second);
     }
 }
 
@@ -61,6 +61,6 @@ void Player::updateStatus() {
 Player::~Player() {
 
 }
-void Player::shoot() {
+Coordinates Player::shoot() {
     // Implementation of shoot()
 }

@@ -5,7 +5,7 @@
 #include "RandomPlayer.h"
 #include <stdexcept>
 
-RandomPlayer::RandomPlayer(std::string name, maps playerMaps, int rank) : PlayerAI(name, playerMaps,  rank), gen(std::chrono::system_clock::now().time_since_epoch().count()) {
+RandomPlayer::RandomPlayer(std::string name, maps playerMaps, int rank) : Player(name, playerMaps,  rank), gen(std::chrono::system_clock::now().time_since_epoch().count()) {
     //można funckje napisać
     for (int x = 0; x < playerMaps.maps.second->getSizeX(); x++) {
         for (int y = 0; y < playerMaps.maps.second->getSizeY(); y++) {
@@ -14,24 +14,29 @@ RandomPlayer::RandomPlayer(std::string name, maps playerMaps, int rank) : Player
     }
 };
 
-std::pair<int, int> RandomPlayer::getRandomField() {
+Coordinates RandomPlayer::getRandomField() {
     if (!possibleShoots_.empty()) {
-        // tut też rozbić na mniejszą funckję np fieldShuffle
         std::shuffle(possibleShoots_.begin(), possibleShoots_.end(), gen);
-        std::pair<int, int> shotCoordinates = possibleShoots_.back();
+        Coordinates shotCoordinates = possibleShoots_.back();
         possibleShoots_.pop_back();
         return shotCoordinates;
     }
-    //we can add exception now
     throw std::runtime_error("Here I will add my own error, I promise");
 }
 
-void RandomPlayer::randomSelectTarget() {
+Coordinates RandomPlayer::randomSelectTarget() {
     auto targetField = getRandomField();
-    selectTarget(targetField.first, targetField.second);
+    selectTarget(targetField);
+    return targetField;
 }
 
 
-void RandomPlayer::shoot() {
-    randomSelectTarget();
+Coordinates RandomPlayer::shoot() {
+    auto target = randomSelectTarget();
+    return target;
 }
+
+RandomPlayer::~RandomPlayer() {
+
+}
+

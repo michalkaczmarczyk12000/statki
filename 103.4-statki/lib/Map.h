@@ -3,6 +3,7 @@
 #include "Ship.h"
 #include <vector>
 #include <memory>
+#include "Coordinates.h"
 class Ship;
 class Map {
 private:
@@ -18,7 +19,7 @@ public:
     int getSizeX() const;
     int getSizeY() const;
 
-    std::shared_ptr<Field> getField(int x, int y) const;
+    std::shared_ptr<Field> getField(Coordinates coords) const;
 
     bool canPlaceShip() const;
     std::vector<Ship> getShips() const;

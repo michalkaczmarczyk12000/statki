@@ -6,12 +6,14 @@
 #define STATKI_COORDINATES_H
 
 
-class Coordinates {
+class Coordinates  {
 public:
     int x;
     int y;
     Coordinates(int xCoord, int yCoord);
     Coordinates() = default;
+    bool operator==(const Coordinates& other) const;
+    bool operator<(const Coordinates& other) const;
 };
 
 

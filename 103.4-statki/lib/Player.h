@@ -27,11 +27,11 @@ public:
     Map getMyMap() const;
     Map getEnemyMap() const;
     void createShip(std::vector<Coordinates> positionOnMap);
-    virtual void shoot();
+    virtual Coordinates shoot();
     void updateStatus();
     bool canPlaceShip() const;
     virtual ~Player();
-    void selectTarget(int x, int y);
+    void selectTarget(Coordinates coords);
 protected:
     std::string name_;
     maps maps_;

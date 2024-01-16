@@ -11,14 +11,15 @@
 
 
 
-class RandomPlayer : public PlayerAI {
+class RandomPlayer : public Player {
 public:
     RandomPlayer(std::string name, maps playerMaps, int rank=1000);
-    void shoot() override;
-private:
-    std::vector<std::pair<int, int>> possibleShoots_;
-    void randomSelectTarget();
-    std::pair<int, int> getRandomField();
+    virtual Coordinates shoot() override;
+    virtual ~RandomPlayer();
+protected:
+    std::vector<Coordinates> possibleShoots_;
+    Coordinates randomSelectTarget();
+    Coordinates getRandomField();
     std::mt19937 gen;
 };
 
