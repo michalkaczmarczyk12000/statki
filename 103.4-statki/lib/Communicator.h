@@ -2,10 +2,11 @@
 #include "Player.h"
 #include "MapReader.h"
 class Communicator {
-private:
-    std::shared_ptr<Player> p1_, p2_;
-    MapReader mapReader;
 public:
-    Communicator();
-    void playerTurnMsg();
+    Communicator() = default;
+    void playerTurnMsg(std::shared_ptr<Player> p);
+    void turnMsg(std::shared_ptr<Player> p);
+    void winMsg(std::shared_ptr<Player> p);
+    void showMaps(std::shared_ptr<Player> p);
+    void welcomeMsg();
 };
