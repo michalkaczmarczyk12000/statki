@@ -15,7 +15,7 @@
 int main()
 {
 
-     std::cout << "Witaj w symulatorze gry w statki ver 1.0\n";
+     std::cout << "Witaj w symulatorze gry w statki ver 2.0\n";
      Map testmap(5,5);
      std::vector<Coordinates> pos;
      int x,y;

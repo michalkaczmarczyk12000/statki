@@ -15,7 +15,7 @@ if(NOT catch2_POPULATED)
 endif()
 
 add_executable(StatkiTests
-GameTests.cpp
+PlayerTests.cpp
 )
 
 set_target_properties(StatkiTests
