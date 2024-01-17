@@ -91,6 +91,8 @@ void Map::moveShip(int shipnr, int x, int y, orientation orientation) {
     }
     ships_[shipnr].move(x, y, orientation);
     for( auto field : ships_[shipnr].getPositionOnMap()) {
-        fields_[field->getx()][field->gety()] = std::make_shared<Field>(field->getx(),field->gety(),field->getStatus(),field->isHidden());
+        field->setHidden(fields_[field->getx()][field->gety()]->isHidden());
+        fields_[field->getx()][field->gety()] = field;
+
     }
 }

@@ -9,6 +9,7 @@ private:
     static int countOfShips;
     int id_;
     int size_;
+    orientation orientation_;
     std::vector<std::shared_ptr<Field>> positionOnMap_;
     // <std::shared_ptr<Field> head;
     // int orientation; (1 - poziomo, 2 - pionowo)
@@ -19,5 +20,8 @@ public:
     void shoot(int x, int y, std::shared_ptr<Map> map);
     void updateShip();
     void move(int x, int y, orientation orientation);
+    void determineOrientation();
+    char getOrientationToDisplay() const;
+    
 };
 

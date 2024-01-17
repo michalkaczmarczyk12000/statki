@@ -44,14 +44,20 @@ int main()
     Player p1("Michał", maps1);
     Player p2("Maciek", maps2);
 
-    testmap2.show();
-    testmap2.moveShip(0, 0, 2, orientation::vertically);
+    map2->show();
+    map2->moveShip(0, 0, 2, orientation::vertically);
     std::cout << std::endl;
-    testmap2.show();
+    map2->show();
 
     std::cout << std::endl;
-    testmap2.moveShip(0, 2, 0, orientation::horizontally);
-    testmap2.show();
+    p1.selectTarget(2,2);
+    p2.checkStatus();
+    map2->show();
+
+    std::cout << std::endl;
+    map2->moveShip(0, 2, 0, orientation::horizontally);
+    map2->show();
+
 
 
     return 0;
