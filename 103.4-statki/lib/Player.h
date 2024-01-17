@@ -28,10 +28,12 @@ public:
     Map getEnemyMap() const;
     void createShip(std::vector<Coordinates> positionOnMap);
     virtual Coordinates shoot();
+    void moveShip(int shipnr, Coordinates coord, orientation orientation);
     void updateStatus();
     bool canPlaceShip() const;
     virtual ~Player();
     void selectTarget(Coordinates coords);
+    std::string getName() const;
 protected:
     std::string name_;
     maps maps_;

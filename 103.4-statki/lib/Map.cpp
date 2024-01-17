@@ -83,13 +83,63 @@ std::vector<Ship> Map::setShips(std::vector<Ship> ships) {
     ships_ = ships;
 }
 
-void Map::moveShip(int shipnr, int x, int y, orientation orientation) {
+void Map::moveShip(int shipnr, Coordinates coords, orientation orientation) {
     auto old_pos = ships_[shipnr].getPositionOnMap();
+    std::vector<std::vector<std::shared_ptr<Field>>> testfields = fields_;
     for( auto field : old_pos) {
-        fields_[field->getx()][field->gety()] = std::make_shared<Field>(Coordinates(field->getx(),field->gety()),FieldStatus::zero,field->isHidden());
+        testfields[field->getx()][field->gety()]->setStatus(FieldStatus::zero);
     }
-    ships_[shipnr].move(x, y, orientation);
+    std::vector<std::shared_ptr<Field>> newPosition = ships_[shipnr].predictNewPosition(coords, orientation);
+    if (!canPlaceShip(newPosition,testfields)) {
+        std::cout << "Cant move ship to this destination" << std::endl;
+        return;
+    }
+    for( auto field : old_pos) {
+        fields_[field->getx()][field->gety()]->setStatus(FieldStatus::zero);
+    }
+    ships_[shipnr].move(coords, orientation);
     for( auto field : ships_[shipnr].getPositionOnMap()) {
-        fields_[field->getx()][field->gety()] = std::make_shared<Field>(Coordinates(field->getx(),field->gety()),field->getStatus(),field->isHidden());
+        fields_[field->getx()][field->gety()]->setStatus(FieldStatus::one);
     }
 }
+
+bool Map::canPlaceShip(std::vector<std::shared_ptr<Field>> position, std::vector<std::vector<std::shared_ptr<Field>>> testfields) const {
+    for (auto field : position) {
+        if (field->getx() < 0 || field->getx() >= sizeX_) {
+            return false;
+        }
+        if (field->gety() < 0 || field->gety() >= sizeY_) {
+            return false;
+        }
+        if(testfields[field->getx()][field->gety()]->getStatus() == FieldStatus::one) {
+            return false;
+        }
+        if(!areNeigboursFieldsFree(field, testfields)) {
+            return false;
+        }
+    }
+    return true;
+}
+//warunek jak jestem na brzegu mapy zeby nie wyjezdzac poza mape 
+
+bool Map::areNeigboursFieldsFree(std::shared_ptr<Field> field, std::vector<std::vector<std::shared_ptr<Field>>> testfields) const {
+    int x = field->getx();
+    int y = field->gety();
+    
+    std::vector<Coordinates>neighbours = {{x-1 ,y}, {x+1, y}, {x, y-1}, {x, y+1}};
+
+    for (auto neighbour : neighbours) {
+        std::cout << neighbour.x << " " << neighbour.y << std::endl;
+        if (neighbour.x >= sizeX_ || neighbour.x < 0 || neighbour.y >= sizeY_ || neighbour.y < 0) {
+            std::cout << "poza mapa" << x << y << std::endl;
+        }
+        else {
+            if(testfields[neighbour.x][neighbour.y]->getStatus() == FieldStatus::one) {
+                return false;
+            }
+        }   
+    }
+    return true;
+}
+
+

@@ -40,3 +40,7 @@ void Field::setx(int x) {
 void Field::sety(int y) {
     coords_.y = y;
 }
+
+Coordinates Field::getCoords() const {
+    return coords_;
+}

@@ -23,7 +23,7 @@ public:
     std::vector<std::shared_ptr<Field>> getPositionOnMap() const;
     void shoot(Coordinates coords, std::shared_ptr<Map> map);
     void updateShip();
-    void move(int x, int y, orientation orientation);
+    void move(Coordinates coords, orientation orientation);
     friend std::ostream& operator<<(std::ostream& os, const Ship& ship) {
         os << "Ship ID: " << ship.id_ << ", Size: " << ship.size_ << "\n";
         os << "Position on Map:\n";
@@ -32,5 +32,6 @@ public:
         }
         return os;
     }
+    std::vector<std::shared_ptr<Field>> predictNewPosition(Coordinates coords, orientation orientation);
 };
 

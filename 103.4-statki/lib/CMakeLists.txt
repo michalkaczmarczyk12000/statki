@@ -14,6 +14,7 @@ add_library(Statki STATIC
     Coordinates.cpp
     AdvancedAIPlayer.cpp
     HumanPlayer.cpp
+    Communicator.cpp
 )
 
 set_target_properties(Statki

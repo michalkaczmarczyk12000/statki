@@ -20,6 +20,7 @@ public:
     FieldStatus getStatus() const;
     int getx() const;
     int gety() const;
+    Coordinates getCoords() const;
     bool isHidden() const;
     void setStatus(FieldStatus status);
     void setHidden(bool change);
