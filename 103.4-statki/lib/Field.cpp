@@ -1,7 +1,8 @@
 #include "Field.h"
 #include <iostream>
 
-Field::Field(int x, int y, FieldStatus status, bool isHidden) : x_(x), y_(y), 
+
+Field::Field(Coordinates coords, FieldStatus status, bool isHidden) : coords_(coords),
     status_(status), isHidden_(isHidden){}
 
 FieldStatus Field::getStatus() const {
@@ -9,11 +10,11 @@ FieldStatus Field::getStatus() const {
 }
 
 int Field::getx() const {
-    return x_;
+    return coords_.x;
 }
 
 int Field::gety() const {
-    return y_;
+    return coords_.y;
 }
 
 bool Field::isHidden() const {
@@ -33,9 +34,9 @@ char Field::getStatusToDisplay() const {
 }
 
 void Field::setx(int x) {
-    x_ = x;
+    coords_.x = x;
 }
 
 void Field::sety(int y) {
-    y_ = y;
+    coords_.y = y;
 }

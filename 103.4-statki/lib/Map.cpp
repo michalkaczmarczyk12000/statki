@@ -3,22 +3,20 @@
 #include <vector>
 
 
-Map::Map(int rows, int cols, std::vector<Ship> ships) : sizeX_(rows), 
-    sizeY_(cols), ships_{ships}{
-    std::vector<std::vector<std::shared_ptr<Field>>> fields;
-    for(int i = 0; i < rows; i++) {
-        std::vector<std::shared_ptr<Field>> row = {};
-        for(int j = 0; j < cols; j++) {
-            row.push_back(std::make_shared<Field>(i,j));
-        }
-        fields.push_back(row);
-    }
-    if(!ships_.empty()) {
-        for(auto ship : ships_) {
-            placeShip(ship);
+Map::Map(int rows, int cols, std::vector<Ship> ships) : sizeX_(rows), sizeY_(cols), ships_{ships} {
+
+    fields_.resize(rows, std::vector<std::shared_ptr<Field>>(cols));
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            fields_[i][j] = std::make_shared<Field>(Coordinates(i, j));
         }
     }
-    fields_ = fields;
+
+    if (!ships_.empty()) {
+        for (auto& ship : ships_) {
+            setShipPosition(ship);
+        }
+    }
 }
 
 void Map::show() {
@@ -29,6 +27,7 @@ void Map::show() {
         std::cout << std::endl;
     }
 }
+
 
 void Map::placeShip(Ship ship) {
     ships_.push_back(ship);
@@ -87,10 +86,10 @@ std::vector<Ship> Map::setShips(std::vector<Ship> ships) {
 void Map::moveShip(int shipnr, int x, int y, orientation orientation) {
     auto old_pos = ships_[shipnr].getPositionOnMap();
     for( auto field : old_pos) {
-        fields_[field->getx()][field->gety()] = std::make_shared<Field>(field->getx(),field->gety(),FieldStatus::zero,field->isHidden());
+        fields_[field->getx()][field->gety()] = std::make_shared<Field>(Coordinates(field->getx(),field->gety()),FieldStatus::zero,field->isHidden());
     }
     ships_[shipnr].move(x, y, orientation);
     for( auto field : ships_[shipnr].getPositionOnMap()) {
-        fields_[field->getx()][field->gety()] = std::make_shared<Field>(field->getx(),field->gety(),field->getStatus(),field->isHidden());
+        fields_[field->getx()][field->gety()] = std::make_shared<Field>(Coordinates(field->getx(),field->gety()),field->getStatus(),field->isHidden());
     }
 }
