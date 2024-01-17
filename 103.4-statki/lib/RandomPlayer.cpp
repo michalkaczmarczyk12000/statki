@@ -6,8 +6,6 @@
 #include <stdexcept>
 
 RandomPlayer::RandomPlayer(std::string name, maps playerMaps, int rank) : Player(name, playerMaps,  rank), gen(std::chrono::system_clock::now().time_since_epoch().count()) {
-
-
 };
 
 Coordinates RandomPlayer::getRandomField() {
