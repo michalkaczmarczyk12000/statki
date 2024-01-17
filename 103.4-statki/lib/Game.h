@@ -18,9 +18,9 @@ private:
     std::shared_ptr<Player> p1_, p2_;
     void turn(std::shared_ptr<Player> player, int delay);
     bool isEnded(std::shared_ptr<Player> player, std::shared_ptr<Player> p2);
-    Communicator com_;
+    Communicator& com_;
 public:
-    Game(Communicator com, std::shared_ptr<Player> p1 = nullptr, std::shared_ptr<Player> p2 = nullptr);
+    Game(Communicator& com, std::shared_ptr<Player> p1 = nullptr, std::shared_ptr<Player> p2 = nullptr);
     void startGame();
     void endGame();
     void winner();

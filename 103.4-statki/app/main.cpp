@@ -49,7 +49,7 @@ int main()
         std::make_pair(std::make_shared<Map>(testmap2), std::make_shared<Map>(testmap))};
     RandomPlayer p1("Michał", maps1);
     AdvancedAIPlayer p2("Maciek", maps2);
-    Communicator com;
+    Communicator com("history.txt");
     Game g1(com);
     g1.prepGame();
     g1.startGame();

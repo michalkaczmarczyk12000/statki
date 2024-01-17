@@ -1,6 +1,7 @@
 #include "Map.h"
 #include <iostream>
 #include <vector>
+#include <sstream>
 
 
 Map::Map(int rows, int cols, std::vector<Ship> ships) : sizeX_(rows), sizeY_(cols), ships_{ships} {
@@ -140,6 +141,31 @@ bool Map::areNeigboursFieldsFree(std::shared_ptr<Field> field, std::vector<std::
         }   
     }
     return true;
+}
+
+std::string Map::getMapAsString() {
+    std::stringstream ss;
+    for(auto row : fields_) {
+        for(auto col : row) {
+            ss << col->getStatusToDisplay() << "\t";
+        }
+        ss << std::endl;
+    }
+    return ss.str();
+}
+
+std::string Map::getMapForEnemyAsString() {
+    std::stringstream ss;
+    for(auto row : fields_) {
+        for(auto col : row) {
+            if(col->isHidden())
+                ss << "?" << "\t";
+            else
+                ss << col->getStatusToDisplay() << "\t";
+        }
+        ss << std::endl;
+    }
+    return ss.str();
 }
 
 

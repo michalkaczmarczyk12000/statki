@@ -25,6 +25,8 @@ public:
     void updateShips();
     void moveShip(int shipnr, Coordinates coords, orientation orientation);
     void setShipPosition(Ship ship);
+    std::string getMapAsString();
+    std::string getMapForEnemyAsString();
 
 
 };
