@@ -51,7 +51,7 @@ TEST_CASE("Ship movement", "[Ship]") {
 
     SECTION("Move ship horizontally") {
 
-        ship.move(3, 3, orientation::horizontally);
+        ship.move(Coordinates(3,3), orientation::horizontally);
 
 
         REQUIRE(ship.getPositionOnMap()[0]->getx() == 3);
@@ -64,7 +64,7 @@ TEST_CASE("Ship movement", "[Ship]") {
 
     SECTION("Move ship vertically") {
 
-        ship.move(3, 3, orientation::vertically);
+        ship.move(Coordinates(3,3), orientation::vertically);
 
 
         REQUIRE(ship.getPositionOnMap()[0]->getx() == 3);

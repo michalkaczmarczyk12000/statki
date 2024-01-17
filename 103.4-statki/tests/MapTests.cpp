@@ -45,7 +45,7 @@ REQUIRE(map.getField(Coordinates(0, 0))->getStatusToDisplay() == '0');
 REQUIRE(map.getField(Coordinates(1, 0))->getStatusToDisplay() == '0');
 REQUIRE(map.getField(Coordinates(2, 0))->getStatusToDisplay() == '1');
 
-map.moveShip(0, 0, 2, orientation::horizontally);
+map.moveShip(0, Coordinates(0,2), orientation::horizontally);
 
 REQUIRE(map.getField(Coordinates(0, 0))->getStatusToDisplay() == '0');
 REQUIRE(map.getField(Coordinates(1, 0))->getStatusToDisplay() == '0');
