@@ -73,3 +73,7 @@ Coordinates Player::shoot() {
 std::string Player::getName() const {
     return name_;
 }
+
+void Player::moveShip(int shipnr, Coordinates coords, orientation orientation) {
+    maps_.maps.first->moveShip(shipnr, coords, orientation);
+}

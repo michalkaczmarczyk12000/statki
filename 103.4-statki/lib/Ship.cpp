@@ -11,7 +11,7 @@ Ship::Ship(std::vector<Coordinates> positionOnMap) :
             // if(pair.first < 0 || pair.second < 0)
             //     //throw std::invalid_argument("poza mapa");
             //     std::cout << "poza mapa" << std::endl;
-            positionOnMap_.push_back(std::make_shared<Field>(pair.x, pair.y, FieldStatus::one));
+            positionOnMap_.push_back(std::make_shared<Field>(Coordinates(pair.x, pair.y), FieldStatus::one));
         }
     countOfShips += 1;
     }
@@ -44,23 +44,30 @@ void Ship::updateShip() {
     );
 }
 
-void Ship::move(int x, int y, orientation shipOrientation) {
-    auto oldPosition = positionOnMap_;
-    positionOnMap_.clear();
-    int currentX = x;
-    int currentY = y;
+void Ship::move(Coordinates coords, orientation shipOrientation) {
+    if(size_ != positionOnMap_.size()) {
+        //tu cos w przyszlosc
+        std::cout << "cant move damaged ship" << std::endl;
+        return;
+    }
+    positionOnMap_ = predictNewPosition(coords, shipOrientation);
+}
+
+std::vector<std::shared_ptr<Field>> Ship::predictNewPosition(Coordinates coords, orientation shipOrientation) {
+    int currentX = coords.x;
+    int currentY = coords.y;
+    std::vector<std::shared_ptr<Field>> newPosition;
     for (int i = 0; i < size_; ++i) {
-        positionOnMap_.push_back(std::make_shared<Field>(currentX, currentY, FieldStatus::one));
+        newPosition.push_back(std::make_shared<Field>(Coordinates(currentX, currentY), FieldStatus::one));
         if (shipOrientation == orientation::horizontally) {
             ++currentY;
         } else {
             ++currentX;
         }
     }
-
-    for (auto field : positionOnMap_) {
-        field->setHidden(false);
-    }
+    return newPosition;
 }
+
+
 
 int Ship::countOfShips = 0;

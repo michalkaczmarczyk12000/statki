@@ -10,6 +10,8 @@ private:
     std::vector<std::vector<std::shared_ptr<Field>>> fields_;
     int sizeX_, sizeY_;
     std::vector<Ship> ships_;
+    bool areNeigboursFieldsFree(std::shared_ptr<Field> field, std::vector<std::vector<std::shared_ptr<Field>>> testfields) const;
+    bool canPlaceShip(std::vector<std::shared_ptr<Field>> position, std::vector<std::vector<std::shared_ptr<Field>>> testfields) const;
 public:
     Map(int rows, int cols, std::vector<Ship> ships = {});
     void show();
@@ -19,9 +21,10 @@ public:
     int getSizeX() const;
     int getSizeY() const;
     std::shared_ptr<Field> getField(Coordinates coords) const;
-    bool canPlaceShip() const;
     std::vector<Ship> getShips() const;
     void updateShips();
-    void moveShip(int shipnr, int x, int y, orientation orientation);
+    void moveShip(int shipnr, Coordinates coords, orientation orientation);
     void setShipPosition(Ship ship);
+
+
 };

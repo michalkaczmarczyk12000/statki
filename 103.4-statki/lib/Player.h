@@ -28,6 +28,7 @@ public:
     Map getEnemyMap() const;
     void createShip(std::vector<Coordinates> positionOnMap);
     virtual Coordinates shoot();
+    void moveShip(int shipnr, Coordinates coord, orientation orientation);
     void updateStatus();
     bool canPlaceShip() const;
     virtual ~Player();
