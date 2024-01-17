@@ -50,7 +50,8 @@ int main()
     RandomPlayer p1("Michał", maps1);
     AdvancedAIPlayer p2("Maciek", maps2);
     Communicator com;
-    Game g1(std::make_shared<RandomPlayer>(p1), std::make_shared<AdvancedAIPlayer>(p2), com);
+    Game g1(com);
+    g1.prepGame();
     g1.startGame();
 
     // p1.updateStatus();

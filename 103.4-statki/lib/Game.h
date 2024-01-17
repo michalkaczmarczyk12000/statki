@@ -7,8 +7,11 @@
 #include "Player.h"
 #include "GameRules.h"
 #include "RandomPlayer.h"
+#include "HumanPlayer.h"
+#include "AdvancedAIPlayer.h"
 #include "Player.h"
 #include "Communicator.h"
+#include "MapReader.h"
 #include <memory>
 class Game {
 private:
@@ -17,7 +20,7 @@ private:
     bool isEnded(std::shared_ptr<Player> player, std::shared_ptr<Player> p2);
     Communicator com_;
 public:
-    Game(std::shared_ptr<Player> p1, std::shared_ptr<Player> p2, Communicator com);
+    Game(Communicator com, std::shared_ptr<Player> p1 = nullptr, std::shared_ptr<Player> p2 = nullptr);
     void startGame();
     void endGame();
     void winner();
