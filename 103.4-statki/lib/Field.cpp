@@ -31,3 +31,11 @@ void Field::setHidden(bool change) {
 char Field::getStatusToDisplay() const {
     return static_cast<char>(status_);
 }
+
+void Field::setx(int x) {
+    x_ = x;
+}
+
+void Field::sety(int y) {
+    y_ = y;
+}

@@ -5,7 +5,10 @@ enum class FieldStatus : char {
     one = '1',
     miss = 'm'
 };
-//zastanowic sie nad oznaczaniem ostatniego strzalu 
+enum class orientation : char {
+    horizontally = 'h',
+    vertically = 'v'
+};
 class Field {
 private:
     int x_ ,y_;
@@ -20,4 +23,6 @@ public:
     void setStatus(FieldStatus status);
     void setHidden(bool change);
     char getStatusToDisplay() const;
+    void setx(int x);
+    void sety(int y);
 };

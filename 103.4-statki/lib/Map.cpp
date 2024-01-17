@@ -32,6 +32,10 @@ void Map::show() {
 
 void Map::placeShip(Ship ship) {
     ships_.push_back(ship);
+    setShipPosition(ship);
+}
+
+void Map::setShipPosition(Ship ship) {
     for(auto field : ship.getPositionOnMap()) {
         fields_[field->getx()][field->gety()] = field;
     }
@@ -78,4 +82,15 @@ void Map::updateShips() {
 
 std::vector<Ship> Map::setShips(std::vector<Ship> ships) {
     ships_ = ships;
+}
+
+void Map::moveShip(int shipnr, int x, int y, orientation orientation) {
+    auto old_pos = ships_[shipnr].getPositionOnMap();
+    for( auto field : old_pos) {
+        fields_[field->getx()][field->gety()] = std::make_shared<Field>(field->getx(),field->gety(),FieldStatus::zero,field->isHidden());
+    }
+    ships_[shipnr].move(x, y, orientation);
+    for( auto field : ships_[shipnr].getPositionOnMap()) {
+        fields_[field->getx()][field->gety()] = std::make_shared<Field>(field->getx(),field->gety(),field->getStatus(),field->isHidden());
+    }
 }

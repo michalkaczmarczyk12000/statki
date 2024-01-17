@@ -14,6 +14,7 @@
 
 int main()
 {
+
      std::cout << "Witaj w symulatorze gry w statki ver 1.0\n";
      Map testmap(5,5);
      std::vector<Coordinates> pos;
@@ -110,14 +111,8 @@ int main()
 //    std::cout <<std::endl;
 //
 //    s1.shoot(0, 2, map1);
-//    p2.checkStatus();
-//    p2.getMyMap().show();
-//
-//    std::cout << std::endl;
-//
-//    p1.getMyMap().show();
 
 
+
+    return 0;
 }
-
-

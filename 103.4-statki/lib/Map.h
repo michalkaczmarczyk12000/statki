@@ -18,11 +18,10 @@ public:
     std::vector<Ship> setShips(std::vector<Ship> ships);
     int getSizeX() const;
     int getSizeY() const;
-
     std::shared_ptr<Field> getField(Coordinates coords) const;
-
     bool canPlaceShip() const;
     std::vector<Ship> getShips() const;
     void updateShips();
-
+    void moveShip(int shipnr, int x, int y, orientation orientation);
+    void setShipPosition(Ship ship);
 };
