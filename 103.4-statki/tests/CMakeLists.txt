@@ -19,6 +19,7 @@ PlayerTests.cpp
 RandomPlayerTests.cpp
         FieldTests.cpp
         MapTests.cpp
+        ShipTests.cpp
 )
 
 set_target_properties(StatkiTests

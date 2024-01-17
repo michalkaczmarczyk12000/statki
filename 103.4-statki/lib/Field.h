@@ -12,7 +12,7 @@ enum class orientation : char {
 };
 class Field {
 private:
-    int x_ ,y_;
+    Coordinates coords_;
     FieldStatus status_;
     bool isHidden_;
 public:
