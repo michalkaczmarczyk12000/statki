@@ -41,14 +41,10 @@ bool Game::isEnded(std::shared_ptr<Player> p, std::shared_ptr<Player> p2) {
 
 void Game::prepGame() {
     com_.welcomeMsg();
-    std::cout << "Podaj imiona 2 graczy" << std::endl;
     std::string name1, name2;
-    std::cin >> name1 >> name2;
+    com_.loadNames(name1, name2);
     std::string filename1, filename2;
-    std::cout << "Podaj sciezke do mapy pierwszego gracza" << std::endl;
-    std::cin >> filename1;
-    std::cout << "Podaj sciezke do mapy drugiego gracza" << std::endl;
-    std::cin >> filename2;
+    com_.loadFilenames(filename1, filename2);
     MapReader mr;
     Map map1 = mr.createMap(filename1);
     Map map2 = mr.createMap(filename2);
@@ -57,6 +53,7 @@ void Game::prepGame() {
 
     maps maps2 = {
         std::make_pair(std::make_shared<Map>(map2), std::make_shared<Map>(map1))};
+    // com_.selecPlayers(p1_, p2_, maps1, maps2, name1, name2);
     while(true) {
         std::cout << "Czy gracz pierwszy ma być człowiekiem(1), losowym graczem(2), czy graczem AI(3)? Wpisz odpowiednia cyfre:" << std::endl;
         int decision;
