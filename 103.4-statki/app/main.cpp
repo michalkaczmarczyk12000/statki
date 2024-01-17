@@ -48,19 +48,23 @@ int main()
         std::make_pair(std::make_shared<Map>(testmap2), std::make_shared<Map>(testmap))};
     Player p1("Michał", maps1);
     Player p2("Maciek", maps2);
-    p2.selectTarget(Coordinates(3,1));
+    //p2.selectTarget(Coordinates(3,1));
     p1.updateStatus();
     p1.getMyMap().show();
+    std::cout << std::endl;
+    testmap.show();
 
     std::cout << std::endl;
     p1.moveShip(0, Coordinates(1,5), orientation::horizontally);
     p1.getMyMap().show();
 
-    p2.selectTarget(Coordinates(1,8));
+    p2.selectTarget(Coordinates(1,5));
     p1.updateStatus();
 
     std::cout << std::endl;
     p1.getMyMap().show();
+    std::cout << std::endl;
+    testmap.show();
 
     std::cout << p2.hasShips() << std::endl;
     std::cout << p1.hasShips() << std::endl;

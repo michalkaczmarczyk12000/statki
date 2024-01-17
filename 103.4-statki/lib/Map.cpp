@@ -87,7 +87,7 @@ void Map::moveShip(int shipnr, Coordinates coords, orientation orientation) {
     auto old_pos = ships_[shipnr].getPositionOnMap();
     std::vector<std::vector<std::shared_ptr<Field>>> testfields = fields_;
     for( auto field : old_pos) {
-        testfields[field->getx()][field->gety()] = std::make_shared<Field>(Coordinates(field->getCoords()),FieldStatus::zero,field->isHidden());
+        testfields[field->getx()][field->gety()]->setStatus(FieldStatus::zero);
     }
     std::vector<std::shared_ptr<Field>> newPosition = ships_[shipnr].predictNewPosition(coords, orientation);
     if (!canPlaceShip(newPosition,testfields)) {
@@ -95,11 +95,11 @@ void Map::moveShip(int shipnr, Coordinates coords, orientation orientation) {
         return;
     }
     for( auto field : old_pos) {
-        fields_[field->getx()][field->gety()] = std::make_shared<Field>(Coordinates(field->getCoords()),FieldStatus::zero,field->isHidden());
+        fields_[field->getx()][field->gety()]->setStatus(FieldStatus::zero);
     }
     ships_[shipnr].move(coords, orientation);
     for( auto field : ships_[shipnr].getPositionOnMap()) {
-        fields_[field->getx()][field->gety()] = std::make_shared<Field>(Coordinates(field->getCoords()),field->getStatus(),field->isHidden());
+        fields_[field->getx()][field->gety()]->setStatus(FieldStatus::one);
     }
 }
 
