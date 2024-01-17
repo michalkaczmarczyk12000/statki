@@ -16,6 +16,7 @@ endif()
 
 add_executable(StatkiTests
 PlayerTests.cpp
+RandomPlayerTests.cpp
 )
 
 set_target_properties(StatkiTests
