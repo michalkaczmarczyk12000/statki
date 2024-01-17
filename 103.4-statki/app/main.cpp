@@ -43,15 +43,31 @@ int main()
     std::pair<std::shared_ptr<Map>, std::shared_ptr<Map>> maps2 = std::make_pair(map2, map1);
     Player p1("Michał", maps1);
     Player p2("Maciek", maps2);
+    p1.selectTarget(0, 2);
+//    p2.checkStatus();
+//    testmap2.show();
+//    map2->show();
+    map2->updateShips();
+    map2->moveShip(0, 0, 2, orientation::vertically);
+    map2->updateShips();
 
-    testmap2.show();
-    testmap2.moveShip(0, 0, 2, orientation::vertically);
+    auto m =  map2->getShips();
+    for (const auto& num : m) {
+        std::cout << num << " ";
+    }
     std::cout << std::endl;
-    testmap2.show();
-
+    std::cout << std::endl;
+    map2->show();
+    std::cout<<p2.hasShips();
+    std::cout << std::endl;
+//    p2.getMyMap().show();
+    std::cout << std::endl;
+    p1.selectTarget(1, 2);
+    p2.checkStatus();
+//    testmap2.show();
     std::cout << std::endl;
     testmap2.moveShip(0, 2, 0, orientation::horizontally);
-    testmap2.show();
+//    testmap2.show();
 
 
     return 0;

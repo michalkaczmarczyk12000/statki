@@ -3,6 +3,7 @@
 #include <memory>
 #include "Field.h"
 #include "Map.h"
+#include <iostream>
 class Map;
 class Ship {
 private:
@@ -19,5 +20,13 @@ public:
     void shoot(int x, int y, std::shared_ptr<Map> map);
     void updateShip();
     void move(int x, int y, orientation orientation);
+    friend std::ostream& operator<<(std::ostream& os, const Ship& ship) {
+        os << "Ship ID: " << ship.id_ << ", Size: " << ship.size_ << "\n";
+        os << "Position on Map:\n";
+        for (const auto& field : ship.positionOnMap_) {
+            os << "  - (" << field->getx() << ", " << field->gety() << ")\n";
+        }
+        return os;
+    }
 };
 
