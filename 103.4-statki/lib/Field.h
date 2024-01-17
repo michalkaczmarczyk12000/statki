@@ -1,4 +1,5 @@
 #pragma once
+#include "Coordinates.h"
 enum class FieldStatus : char {
     x = 'x',
     zero = '0',
@@ -15,7 +16,7 @@ private:
     FieldStatus status_;
     bool isHidden_;
 public:
-    Field(int x = 0, int y = 0, FieldStatus state = FieldStatus::zero, bool isHidden = true);
+    Field(Coordinates coords = {0 ,0}, FieldStatus state = FieldStatus::zero, bool isHidden = true);
     FieldStatus getStatus() const;
     int getx() const;
     int gety() const;

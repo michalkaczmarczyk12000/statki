@@ -18,6 +18,7 @@ add_executable(StatkiTests
 PlayerTests.cpp
 RandomPlayerTests.cpp
         FieldTests.cpp
+        MapTests.cpp
 )
 
 set_target_properties(StatkiTests

@@ -4,7 +4,7 @@
 
 
 TEST_CASE("Field Initialization") {
-    Field field(1, 2, FieldStatus::zero, true);
+    Field field(Coordinates(1, 2), FieldStatus::zero, true);
 
     REQUIRE(field.getx() == 1);
     REQUIRE(field.gety() == 2);
@@ -13,7 +13,7 @@ TEST_CASE("Field Initialization") {
 }
 
 TEST_CASE("Field Status Modification") {
-    Field field(3, 4, FieldStatus::one, false);
+    Field field(Coordinates(3, 4), FieldStatus::one, false);
 
     REQUIRE(field.getStatus() == FieldStatus::one);
 
@@ -23,7 +23,7 @@ TEST_CASE("Field Status Modification") {
 }
 
 TEST_CASE("Field Visibility Modification") {
-    Field field(5, 6, FieldStatus::zero, true);
+    Field field(Coordinates(5, 6), FieldStatus::zero, true);
 
     REQUIRE(field.isHidden() == true);
 
@@ -33,13 +33,13 @@ TEST_CASE("Field Visibility Modification") {
 }
 
 TEST_CASE("Field Display Status") {
-    Field field(7, 8, FieldStatus::miss, false);
+    Field field(Coordinates(7,  8), FieldStatus::miss, false);
 
     REQUIRE(field.getStatusToDisplay() == 'm');
 }
 
 TEST_CASE("Field Coordinates Modification") {
-    Field field(9, 10, FieldStatus::zero, false);
+    Field field(Coordinates(9, 10), FieldStatus::zero, false);
 
     REQUIRE(field.getx() == 9);
     REQUIRE(field.gety() == 10);
