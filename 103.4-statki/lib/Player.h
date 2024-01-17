@@ -32,6 +32,7 @@ public:
     bool canPlaceShip() const;
     virtual ~Player();
     void selectTarget(Coordinates coords);
+    std::string getName() const;
 protected:
     std::string name_;
     maps maps_;

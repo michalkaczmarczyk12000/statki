@@ -69,3 +69,7 @@ Player::~Player() {
 Coordinates Player::shoot() {
     // Implementation of shoot()
 }
+
+std::string Player::getName() const {
+    return name_;
+}
