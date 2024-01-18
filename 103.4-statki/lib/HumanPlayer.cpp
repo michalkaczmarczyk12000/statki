@@ -8,17 +8,6 @@
 HumanPlayer::HumanPlayer(std::string name, maps playerMaps, int rank) : Player(name, playerMaps, rank) {};
 
 Coordinates HumanPlayer::shoot() {
-    int x;
-    int y;
-    bool exist = false;
-    std::cout<<"Podaj współrzędne: ";
-    std::cin>>x>>y;
-    Coordinates coordinates(x, y);
-
-    selectTarget(coordinates);
-    lastShoots.push_back(coordinates);
-
-    return coordinates;
 }
 
 bool HumanPlayer::isChecked(Coordinates coords) const {
@@ -27,36 +16,27 @@ bool HumanPlayer::isChecked(Coordinates coords) const {
 }
 
 void HumanPlayer::turn() {
-    std::cout<<"Strzał(1) Ruch(2): " ;
-    int decision;
-    std::cin>>decision;
+    Communicator com;
+    Coordinates coords;
+    int decision = com.makeDecision();
     switch (decision) {
         case 1:
-            shoot();
+            coords = com.getCoords();
+            selectTarget(coords);
             break;
         case 2:
             maps_.maps.first->show();
             maps_.maps.first->showShipsHeads();
-            std::cout<<"Podaj statek";
+
             int shipnr;
-            std::cin >> shipnr;
-            std::cout << "Podaj rząd i kolumne, do które ma się przemieścić dziób statku:" << std::endl;
-            int xx;
-            int yy;
-            std::cin >> xx;
-            std::cin >> yy;
-            std::cout << "Podaj orientacje statku v - pionowo, h - poziomo:" << std::endl;
-            char orient;
-            std::cin >> orient;
+            shipnr = com.getShipId();
+            coords= com.getCoords();
             orientation shipOrientation;
-            if(orient == 'h')
-                shipOrientation = orientation::horizontally;
-            else
-                shipOrientation = orientation::vertically;
-            moveShip(shipnr, Coordinates(xx, yy), shipOrientation);
+            shipOrientation = com.getOrientation();
+            moveShip(shipnr, coords, shipOrientation);
             break;
         default:
-            std::cout<<"Popraw ruch";
+            com.alert("Popraw ruch!");
             turn();
             break;
     }

@@ -25,7 +25,7 @@ void Communicator::winMsg(std::shared_ptr<Player> p) {
 
 void Communicator::welcomeMsg() {
     std::stringstream welcomeMessage;
-    welcomeMessage << "Witaj w symulatorze wersja 1.1\n";
+    welcomeMessage << "Witaj w symulatorze wersja 3.0\n";
     logMessage(welcomeMessage.str());
 }
 
@@ -82,3 +82,39 @@ void Communicator::logMessage(const std::string& message) {
     logFile << message;
 }
 
+Coordinates Communicator::getCoords() const {
+    std::cout << "Podaj współrzędne (x, y)";
+    int x, y;
+    std::cin>>x>>y;
+    return Coordinates(x, y);
+}
+
+int Communicator::makeDecision() const{
+    std::cout<<"Strzał(1) Ruch(2): " ;
+    int decision;
+    std::cin>>decision;
+    return decision;
+}
+
+orientation Communicator::getOrientation() const {
+    std::cout << "Podaj orientacje statku v - pionowo, h - poziomo:" << std::endl;
+    char orient;
+    std::cin >> orient;
+    orientation shipOrientation;
+    if(orient == 'h')
+        shipOrientation = orientation::horizontally;
+    else
+        shipOrientation = orientation::vertically;
+    return shipOrientation;
+}
+
+int Communicator::getShipId() const {
+    std::cout<<"Podaj statek";
+    int shipnr;
+    std::cin >> shipnr;
+    return shipnr;
+}
+
+void Communicator::alert(std::string alert) {
+    std::cout<<alert;
+}

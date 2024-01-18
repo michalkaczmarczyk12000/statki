@@ -24,8 +24,8 @@ void Game::startGame() {
 }
 
 void Game::turn(std::shared_ptr<Player> p, int delay) {
-    p->turn();
     com_.turnMsg(p);
+    p->turn();
     com_.showMaps(p);
     std::this_thread::sleep_for(std::chrono::milliseconds(delay));
 }

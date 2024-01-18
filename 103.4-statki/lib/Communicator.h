@@ -13,6 +13,7 @@ public:
             std::cerr << "Unable to open log file: " << logFileName << std::endl;
         }
     }
+    Communicator() = default;
 
     ~Communicator() {
         if (logFile.is_open()) {
@@ -31,7 +32,11 @@ public:
     void loadNames(std::string& name1, std::string& name2);
     void loadFilenames(std::string& filename1, std::string& filename2);
     void selectPlayers(std::shared_ptr<Player>& p, maps& playerMaps, const std::string& playerName);
-
+    Coordinates getCoords() const;
+    int makeDecision() const;
+    orientation getOrientation() const;
+    int getShipId() const;
+    void alert(std::string alert);
 private:
     std::ofstream logFile;
 };
