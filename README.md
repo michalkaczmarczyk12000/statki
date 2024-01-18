@@ -17,6 +17,7 @@ Wybranie rozstawionych statków z predefioniowanych plików
 4. Ruchy graczy:
 Gracze wykonują ruchy, oddając strzały na planszę przeciwnika.
 Po oddaniu strzału, gra informuje gracza, czy trafił w statek przeciwnika czy nie.
+Informacja ta znjaduje się na mapie która jest wyświetlana
 5. Cel gry:
 W zależności od typu gry mogą być różne cele:
 Celem gry jest zatopienie wszystkich statków przeciwnika.
@@ -25,13 +26,13 @@ Gracz, który zatopi wszystkie statki przeciwnika, wygrywa.
 Gracz podaje współrzędne strzału, np. (1, 3).
 Gra informuje, czy strzał trafił czy chybiono.
 7. Komunikaty:
-Gra powinna dostarczać czytelne komunikaty, informujące gracza o wynikach jego ruchu. W naszym wypadku na mapie przeciwnika pokazuje się jeden z 3 oczywistych symboli
+Gra powinna dostarczać czytelne komunikaty, informujące gracza o wynikach jego ruchu. W naszym wypadku na mapie przeciwnika pokazuje się jeden z 3 oczywistych symboli(x, ?, m) gdzie x oznacza trafiony, m pudło a ? oznacza pole którego nie sprawdzaliśmy
 8. Tryb gry:
 Gra może oferować tryb jednoosobowy (gracz kontra komputer) oraz tryb wieloosobowy (gracz kontra gracz).
 9. Interfejs użytkownika:
 Komunikacja odbywa się przez konsolę
 11. Zapis i wczytywanie gry:
-Gra powinna umożliwiać zapisywanie stanu gry, aby gracze mogli kontynuować rozgrywkę później.
+Gra Zapisuje partię do pliku txt, mapa jest wczytywana z wcześniej predefiniowanych map
 12. Gra wieloetapowa:
 Etap wyboru typu graczy oraz map i etap właściwej gry.
 13. Zastosowanie struktur danych:
