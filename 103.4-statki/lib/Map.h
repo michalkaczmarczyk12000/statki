@@ -27,6 +27,7 @@ public:
     void setShipPosition(Ship ship);
     std::string getMapAsString();
     std::string getMapForEnemyAsString();
+    void showShipsHeads();
 
 
 };

@@ -91,16 +91,17 @@ void Map::moveShip(int shipnr, Coordinates coords, orientation orientation) {
         testfields[field->getx()][field->gety()]->setStatus(FieldStatus::zero);
     }
     std::vector<std::shared_ptr<Field>> newPosition = ships_[shipnr].predictNewPosition(coords, orientation);
-    if (!canPlaceShip(newPosition,testfields)) {
-        std::cout << "Cant move ship to this destination" << std::endl;
-        return;
+    if (canPlaceShip(newPosition,testfields)) {
+        for( auto field : old_pos) {
+            fields_[field->getx()][field->gety()]->setStatus(FieldStatus::zero);
+        }
+        ships_[shipnr].move(coords, orientation);
+        for( auto field : ships_[shipnr].getPositionOnMap()) {
+            fields_[field->getx()][field->gety()]->setStatus(FieldStatus::one);
+        }
     }
-    for( auto field : old_pos) {
-        fields_[field->getx()][field->gety()]->setStatus(FieldStatus::zero);
-    }
-    ships_[shipnr].move(coords, orientation);
-    for( auto field : ships_[shipnr].getPositionOnMap()) {
-        fields_[field->getx()][field->gety()]->setStatus(FieldStatus::one);
+    else {
+        std::cout << "nie mozna ruszyc statku w to miejsce" << std::endl;
     }
 }
 
@@ -166,6 +167,14 @@ std::string Map::getMapForEnemyAsString() {
         ss << std::endl;
     }
     return ss.str();
+}
+
+void Map::showShipsHeads() {
+    for(int i = 0; i < ships_.size(); i++) {
+        std::cout << "row:" << ships_[i].getPositionOnMap()[0]->getx() << 
+            " col: " << ships_[i].getPositionOnMap()[0]->gety() <<
+            " number: " << i << std::endl;
+    }
 }
 
 
