@@ -11,7 +11,7 @@ Game::Game(Communicator& com, std::shared_ptr<Player> p1, std::shared_ptr<Player
 void Game::startGame() {
     com_.welcomeMsg();
     while(true) {
-        int delay = 10;
+        int delay = 1000;
         if(isEnded(p1_, p2_)) {
             break;
         }

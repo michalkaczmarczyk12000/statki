@@ -102,6 +102,9 @@ void Map::moveShip(int shipnr, Coordinates coords, orientation orientation) {
     }
     else {
         std::cout << "nie mozna ruszyc statku w to miejsce" << std::endl;
+        for( auto field : old_pos) {
+            testfields[field->getx()][field->gety()]->setStatus(FieldStatus::one);
+        }
     }
 }
 
