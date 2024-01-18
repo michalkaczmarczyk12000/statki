@@ -15,7 +15,6 @@ Coordinates RandomPlayer::getRandomField() {
         possibleShoots_.pop_back();
         return shotCoordinates;
     }
-    throw std::runtime_error("Here I will add my own error, I promise");
 }
 
 Coordinates RandomPlayer::randomSelectTarget() {
