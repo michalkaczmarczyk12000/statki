@@ -11,7 +11,7 @@ public:
     HumanPlayer(std::string name, maps playerMaps, int rank=1000);
     virtual Coordinates shoot() override;
     bool isChecked(Coordinates coords) const;
-    void turn(int delay) override;
+    void turn() override;
 private:
     std::vector<Coordinates> lastShoots;
 };

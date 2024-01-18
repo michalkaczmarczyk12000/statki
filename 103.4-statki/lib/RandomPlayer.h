@@ -15,7 +15,7 @@ class RandomPlayer : public Player {
 public:
     RandomPlayer(std::string name, maps playerMaps, int rank=1000);
     virtual Coordinates shoot() override;
-    void turn(int delay) override;
+    void turn() override;
     virtual ~RandomPlayer();
 protected:
     Coordinates randomSelectTarget();

@@ -4,6 +4,7 @@
 
 #include "HumanPlayer.h"
 #include <algorithm>
+#include "Communicator.h"
 HumanPlayer::HumanPlayer(std::string name, maps playerMaps, int rank) : Player(name, playerMaps, rank) {};
 
 Coordinates HumanPlayer::shoot() {
@@ -13,20 +14,10 @@ Coordinates HumanPlayer::shoot() {
     std::cout<<"Podaj współrzędne: ";
     std::cin>>x>>y;
     Coordinates coordinates(x, y);
-    for (auto coord : lastShoots) {
-        if (coord == coordinates) {
-            exist = true;
-            break;
-        }
-    }
-    if (exist){
-        std::cout<<"Ponów strzał\n";
-        shoot();
-    }
-    else {
+
     selectTarget(coordinates);
     lastShoots.push_back(coordinates);
-    }
+
     return coordinates;
 }
 
@@ -35,7 +26,7 @@ bool HumanPlayer::isChecked(Coordinates coords) const {
     return (it != possibleShoots_.end());
 }
 
-void HumanPlayer::turn(int delay) {
+void HumanPlayer::turn() {
     std::cout<<"Strzał(1) Ruch(2): " ;
     int decision;
     std::cin>>decision;
@@ -66,7 +57,7 @@ void HumanPlayer::turn(int delay) {
             break;
         default:
             std::cout<<"Popraw ruch";
-            turn(100);
+            turn();
             break;
     }
 }

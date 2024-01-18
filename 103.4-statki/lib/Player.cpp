@@ -77,4 +77,4 @@ void Player::moveShip(int shipnr, Coordinates coords, orientation orientation) {
     maps_.maps.first->moveShip(shipnr, coords, orientation);
 }
 
-void turn(int delay){}
+void turn(){}
