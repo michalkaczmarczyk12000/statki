@@ -57,8 +57,8 @@ Obsługa błędów dla sytuacji wyjątkowych, takich jak podanie  próba ruchu p
     - AIPlayer
 -  Map
 
-## Wstępny diagram klas UML
-![uml_statki.drawio](/uploads/601f0317cb058c9d87de30a45ddd7402/uml_statki.drawio.png)
+## Końcowy diagram klas UML
+![uml_statki_final.drawio.png]
 
 ## Planowany podział prac
 Michał Kaczmarczyk
