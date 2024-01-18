@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 #include <sstream>
+#include "CannotMoveToDestination.h"
+#include <stdexcept>
 
 
 Map::Map(int rows, int cols, std::vector<Ship> ships) : sizeX_(rows), sizeY_(cols), ships_{ships} {
@@ -101,10 +103,10 @@ void Map::moveShip(int shipnr, Coordinates coords, orientation orientation) {
         }
     }
     else {
-        std::cout << "nie mozna ruszyc statku w to miejsce" << std::endl;
         for( auto field : old_pos) {
             testfields[field->getx()][field->gety()]->setStatus(FieldStatus::one);
         }
+        throw CannotMoveToDestination("Nie można poruszyć się w to miejsce");
     }
 }
 

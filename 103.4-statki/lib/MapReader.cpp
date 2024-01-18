@@ -39,7 +39,15 @@ bool MapReader::isValidPosition(int row, int col, std::vector<std::vector<char>>
 }
 
 Map MapReader::createMap(std::string filename) {
-    auto mapData = readMap(filename);
+    std::vector<std::vector<char>> mapData;
+    try 
+    {
+    mapData = readMap(filename);
+    }
+    catch(const CannotOpenFileError& e)
+    {
+        exit(0);
+    }
     Map mapFromFile(mapData.size(), mapData[0].size());
     placeShips(mapData, mapFromFile);
     return mapFromFile;
@@ -49,7 +57,7 @@ Map MapReader::createMap(std::string filename) {
 std::vector<std::vector<char>> MapReader::readMap(std::string filename) {
     std::ifstream file(filename);
     if (!file.is_open())
-        std::cout << "blad pliku" << std::endl;
+        throw CannotOpenFileError("Błąd pliku");
     std::vector<std::vector<char>> map;
     std::vector<char> row;
     std::string line;

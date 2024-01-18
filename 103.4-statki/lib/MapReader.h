@@ -1,6 +1,7 @@
 #pragma once
 #include "Map.h"
 #include <string>
+#include "CannotOpenFileError.h"
 
 
 class MapReader {

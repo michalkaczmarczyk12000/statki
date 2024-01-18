@@ -10,6 +10,7 @@
 #include "Field.h"
 #include "Ship.h"
 #include "Coordinates.h"
+#include "WrongShootCoordinates.h"
 class Ship;
 class Map;
 struct maps {
@@ -35,6 +36,7 @@ public:
     virtual ~Player();
     void selectTarget(Coordinates coords);
     std::string getName() const;
+    bool isTargetValid(Coordinates coords);
 protected:
     std::string name_;
     maps maps_;

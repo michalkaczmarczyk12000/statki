@@ -37,11 +37,22 @@ void Player::changeRank(int points) {
     rank_ += points;
 }
 
+bool Player::isTargetValid(Coordinates coords) {
+    if(coords.x < 0 || coords.y < 0 || coords.x >= maps_.maps.first->getSizeX() || coords.y >= maps_.maps.first->getSizeY()) {
+        return false;
+    }
+    else
+        return true;
+}
+
 void Player::selectTarget(Coordinates coords) {
 
     if(hasShips())
     {
-        maps_.maps.first->getShips()[0].shoot(coords, maps_.maps.second);
+        if(isTargetValid(coords))
+            maps_.maps.first->getShips()[0].shoot(coords, maps_.maps.second);
+        else 
+            throw WrongShootCoordinates("Złe współrzędne strzału");
     }
 }
 

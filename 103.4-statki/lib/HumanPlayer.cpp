@@ -5,6 +5,8 @@
 #include "HumanPlayer.h"
 #include <algorithm>
 #include "Communicator.h"
+#include "WrongShootCoordinates.h"
+#include "CannotMoveToDestination.h"
 HumanPlayer::HumanPlayer(std::string name, maps playerMaps, int rank) : Player(name, playerMaps, rank) {};
 
 Coordinates HumanPlayer::shoot() {
@@ -22,18 +24,33 @@ void HumanPlayer::turn() {
     switch (decision) {
         case 1:
             coords = com.getCoords();
-            selectTarget(coords);
+            try
+            {
+                selectTarget(coords);
+            }
+            catch(const WrongShootCoordinates& e)
+            {
+                std::cout << "Złe współrzędne strzału" << std::endl;
+                turn();
+            }
             break;
         case 2:
             maps_.maps.first->show();
             maps_.maps.first->showShipsHeads();
-
             int shipnr;
             shipnr = com.getShipId();
             coords= com.getCoords();
             orientation shipOrientation;
             shipOrientation = com.getOrientation();
+            try 
+            {
             moveShip(shipnr, coords, shipOrientation);
+            }
+            catch(const CannotMoveToDestination& e)
+            {
+                std::cout << "Nie można płynąć do celu" << std::endl;
+                turn();
+            }
             break;
         default:
             com.alert("Popraw ruch!");

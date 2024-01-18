@@ -6,11 +6,12 @@
 #include "AdvancedAIPlayer.h"
 #include "MapReader.h"
 #include "Writer.h"
+#include "CannotOpenFileError.h"
 class Communicator {
 public:
     Communicator(const std::string& logFileName) : logFile(logFileName) {
         if (!logFile.is_open()) {
-            std::cerr << "Unable to open log file: " << logFileName << std::endl;
+            throw CannotOpenFileError("Błąd pliku");
         }
     }
     Communicator() = default;

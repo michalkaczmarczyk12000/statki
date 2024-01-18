@@ -15,6 +15,9 @@ add_library(Statki STATIC
     AdvancedAIPlayer.cpp
     HumanPlayer.cpp
     Communicator.cpp
+    CannotMoveToDestination.cpp
+    CannotOpenFileError.cpp
+    WrongShootCoordinates.cpp
 )
 
 set_target_properties(Statki
