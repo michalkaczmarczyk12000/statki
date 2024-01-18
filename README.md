@@ -58,7 +58,7 @@ Obsługa błędów dla sytuacji wyjątkowych, takich jak podanie  próba ruchu p
 -  Map
 
 ## Końcowy diagram klas UML
-![uml_statki_final.drawio.png]
+![uml_statki_final.drawio](/uploads/7455fb53fe2fc3c983f81059bdfd978c/uml_statki_final.drawio.png)
 
 ## Planowany podział prac
 Michał Kaczmarczyk
