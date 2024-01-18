@@ -26,6 +26,7 @@ public:
     bool hasShips() const;
     Map getMyMap() const;
     Map getEnemyMap() const;
+    virtual void turn(int delay) = 0;
     void createShip(std::vector<Coordinates> positionOnMap);
     virtual Coordinates shoot();
     void moveShip(int shipnr, Coordinates coord, orientation orientation);

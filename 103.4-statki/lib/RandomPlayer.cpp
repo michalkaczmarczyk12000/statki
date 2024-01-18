@@ -34,3 +34,6 @@ RandomPlayer::~RandomPlayer() {
 
 }
 
+void RandomPlayer::turn(int delay) {
+   shoot();
+}

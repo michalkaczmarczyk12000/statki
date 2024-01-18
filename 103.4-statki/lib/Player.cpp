@@ -67,7 +67,6 @@ Player::~Player() {
 
 }
 Coordinates Player::shoot() {
-    // Implementation of shoot()
 }
 
 std::string Player::getName() const {
@@ -77,3 +76,5 @@ std::string Player::getName() const {
 void Player::moveShip(int shipnr, Coordinates coords, orientation orientation) {
     maps_.maps.first->moveShip(shipnr, coords, orientation);
 }
+
+void turn(int delay){}

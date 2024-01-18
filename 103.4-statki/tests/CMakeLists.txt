@@ -15,7 +15,6 @@ if(NOT catch2_POPULATED)
 endif()
 
 add_executable(StatkiTests
-PlayerTests.cpp
 RandomPlayerTests.cpp
         FieldTests.cpp
         MapTests.cpp

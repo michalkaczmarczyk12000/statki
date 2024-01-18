@@ -4,7 +4,7 @@
 
 #ifndef INC_103_4_STATKI_RANDOMPLAYER_H
 #define INC_103_4_STATKI_RANDOMPLAYER_H
-#include "PlayerAI.h"
+#include "Player.h"
 #include <chrono>
 #include <random>
 #include <algorithm>
@@ -15,6 +15,7 @@ class RandomPlayer : public Player {
 public:
     RandomPlayer(std::string name, maps playerMaps, int rank=1000);
     virtual Coordinates shoot() override;
+    void turn(int delay) override;
     virtual ~RandomPlayer();
 protected:
     Coordinates randomSelectTarget();
